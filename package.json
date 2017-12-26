@@ -1,0 +1,14 @@
+{
+  "name": "raspberry-temp-sensor",
+  "version": "1.0.0",
+  "description": "ds18b20 temperature sensor & node js & raspberry",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "w1temp": "^4.0.2"
+  }
+}
