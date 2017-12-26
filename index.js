@@ -24,7 +24,6 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
   // print actual temperature on changed
   sensor.on('change', function (temp) {
     console.log('Temp changed:', temp, '°C');
-  });
 
    // post api send temp
    var json = {
@@ -48,5 +47,6 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
      }
    });
    // post api send temp
+   });
 
 });
