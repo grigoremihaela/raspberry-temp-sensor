@@ -1,3 +1,5 @@
+var request=require('request');
+
 var W1Temp = require('w1temp');
 
 // turn on gpio pin 13 as W1 power if you want to
@@ -23,5 +25,26 @@ W1Temp.getSensor('28-0516a1dbffff').then(function (sensor) {
   sensor.on('change', function (temp) {
     console.log('Temp changed:', temp, '°C');
   });
+
+   // post api send temp
+   var json = {
+     "tempData": temp
+   };
+   
+   var options = {
+     url: 'http://localhost:3000/temperature',
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     json: json
+   };
+
+   request(options, function(err, res, body) {
+     if (res && (res.statusCode === 200 || res.statusCode === 201)) {
+       console.log(body);
+     }
+   });
+   // post api send temp
 
 });

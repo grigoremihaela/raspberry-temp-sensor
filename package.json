@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "request": "^2.83.0",
     "w1temp": "^4.0.2"
   }
 }
