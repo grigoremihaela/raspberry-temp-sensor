@@ -13,7 +13,7 @@ W1Temp.getSensorsUids().then(function (sensorsUids) {
 });
 
 // get instance of temperature sensor
-W1Temp.getSensor('28-00000636a3e3').then(function (sensor) {
+W1Temp.getSensor('28-0516a1dbffff ').then(function (sensor) {
 
   // print actual temperature
   var temp = sensor.getTemperature();
