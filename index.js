@@ -28,11 +28,11 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
 
    // post api send temp
    var json = {
-     "tempData": temp
+     "temp": temp
    };
    
    var options = {
-     url: 'http://localhost:3000/temperature',
+     url: 'http://localhost:3001/temperature',
      method: 'POST',
      headers: {
        'Content-Type': 'application/json'
