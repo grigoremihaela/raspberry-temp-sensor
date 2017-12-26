@@ -41,7 +41,9 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
    };
 
    request(options, function(err, res, body) {
+    console.log(err);
      if (res && (res.statusCode === 200 || res.statusCode === 201)) {
+       console.log(res.statusCode);
        console.log(body);
      }
    });
