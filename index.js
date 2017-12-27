@@ -31,7 +31,8 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
    };
    
    var options = {
-     url: 'http://192.168.1.7:3001/temperature',
+     //url: 'http://192.168.1.7:3001/temperature',
+     url: 'http://pi-temp-api.herokuapp.com/temperature',
      method: 'POST',
      headers: {
        'Content-Type': 'application/json'
