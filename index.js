@@ -19,7 +19,7 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
 
   // print actual temperature
   var temp = sensor.getTemperature();
-  console.log('Actual temp:', temp, '°C');
+  //console.log('Actual temp:', temp, '°C');
 
   // print actual temperature on changed
   sensor.on('change', function (temp) {
@@ -44,7 +44,7 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
     console.log(err);
      if (res && (res.statusCode === 200 || res.statusCode === 201)) {
        console.log(res.statusCode);
-       console.log(body);
+       //console.log(body);
      }
    });
    // post api send temp
