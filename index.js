@@ -18,10 +18,10 @@ W1Temp.getSensorsUids().then(function (sensorsUids) {
     W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
     // print actual temperature
     var temp = sensor.getTemperature();
-    //console.log('Actual temp:', temp, '°C');
+    console.log('Actual temp'+i+': ', temp, '°C');
     // print actual temperature on changed
     sensor.on('change', function (temp) {
-      console.log('Temp changed:', temp, '°C');
+      console.log('Temp changed '+i+': ', temp, '°C');
       // post api send temp
       var json = {
         "temp": temp
