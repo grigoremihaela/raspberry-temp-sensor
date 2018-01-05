@@ -51,7 +51,7 @@ W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
    // post api send temp
    });
 
-//});
+});
 
 }
 
