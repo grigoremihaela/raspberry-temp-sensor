@@ -12,11 +12,9 @@ W1Temp.setGpioData(6);
 // print list of available sensors uids (ex.: [ '28-00000636a3e3' ])
 W1Temp.getSensorsUids().then(function (sensorsUids) {
   console.log(sensorsUids);
-setInterval(function(){ 
-  for (var i = 0; i < sensorsUids.length; i++) {
-    console.log('start sensor'+i);
-    // get instance of temperature sensor
-W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
+
+// get instance of temperature sensor
+W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
 
   // print actual temperature
   var temp = sensor.getTemperature();
@@ -52,8 +50,43 @@ W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
    });
 
 });
-console.log('stop sensor'+i);
-}//end for
-}, 1000);
+
+// get instance of temperature sensor
+W1Temp.getSensor(sensorsUids[1]).then(function (sensor) {
+
+  // print actual temperature
+  var temp = sensor.getTemperature();
+  //console.log('Actual temp:', temp, '°C');
+
+  // print actual temperature on changed
+  sensor.on('change', function (temp) {
+    console.log('Temp changed 1:', temp, '°C');
+
+   // post api send temp
+   var json = {
+     "temp": temp
+   };
+   
+   var options = {
+     //url: 'http://192.168.1.7:3001/temperature',
+     url: 'http://pi-temp-api.herokuapp.com/temperature',
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     json: json
+   };
+
+   request(options, function(err, res, body) {
+    //console.log(err);
+     if (res && (res.statusCode === 200 || res.statusCode === 201)) {
+       //console.log(res.statusCode);
+       //console.log(body);
+     }
+   });
+   // post api send temp
+   });
+
+});
 
 });
