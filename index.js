@@ -13,7 +13,7 @@ W1Temp.setGpioData(6);
 W1Temp.getSensorsUids().then(function (sensorsUids) {
   console.log(sensorsUids[0]);
   console.log(sensorsUids[1]);
-});
+
 
 // get instance of temperature sensor
 W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
@@ -91,3 +91,4 @@ W1Temp.getSensor(sensorsUids[1]).then(function (sensor) {
 
 });
 
+});
