@@ -8,7 +8,7 @@ var W1Temp = require('w1temp');
 //W1Temp.setGpioData(6);
 
 // print list of available sensors uids (ex.: [ '28-00000636a3e3' ])
-W1Temp.getSensorsUids().then(function (sensorsUids) {
+W1Temp.getSensorsUids(17).then(function (sensorsUids) {
   console.log(sensorsUids);
 });
 
