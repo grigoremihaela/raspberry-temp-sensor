@@ -14,7 +14,7 @@ W1Temp.getSensorsUids().then(function (sensorsUids) {
   console.log(sensorsUids);
 
 // get instance of temperature sensor
-W1Temp.getSensor(sensorsUids).then(function (sensor) {
+W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
 
   // print actual temperature
   var temp = sensor.getTemperature();
@@ -51,11 +51,8 @@ W1Temp.getSensor(sensorsUids).then(function (sensor) {
 
 });
 
-// set gpio pin 6 to use as W1 data channel
-// if is not set by instructions above (required root permissions)
-W1Temp.setGpioData(4);
 // get instance of temperature sensor
-W1Temp.getSensor(sensorsUids).then(function (sensor) {
+W1Temp.getSensor(sensorsUids[1]).then(function (sensor) {
 
   // print actual temperature
   var temp = sensor.getTemperature();
