@@ -8,7 +8,6 @@ W1Temp.setGpioPower(13);
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
 W1Temp.setGpioData(6);
-//W1Temp.setGpioData(4);
 
 // print list of available sensors uids (ex.: [ '28-00000636a3e3' ])
 W1Temp.getSensorsUids().then(function (sensorsUids) {
@@ -51,6 +50,14 @@ W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
    });
 
 });
+
+// set gpio pin 6 to use as W1 data channel
+// if is not set by instructions above (required root permissions)
+W1Temp.setGpioData(6);
+
+// print list of available sensors uids (ex.: [ '28-00000636a3e3' ])
+W1Temp.getSensorsUids().then(function (sensorsUids) {
+  console.log(sensorsUids);
 
 // get instance of temperature sensor
 W1Temp.getSensor(sensorsUids[1]).then(function (sensor) {
