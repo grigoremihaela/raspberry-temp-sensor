@@ -78,7 +78,7 @@ W1Temp.getSensor(sensorsUids[1]).then(function (sensor) {
    };
 
    request(options, function(err, res, body) {
-    console.log(err);
+    //console.log(err);
      if (res && (res.statusCode === 200 || res.statusCode === 201)) {
        //console.log(res.statusCode);
        //console.log(body);
