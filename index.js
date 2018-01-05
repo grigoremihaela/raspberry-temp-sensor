@@ -15,15 +15,15 @@ W1Temp.getSensorsUids().then(function (sensorsUids) {
 
   for (var i = 0; i < sensorsUids.length; i++) {
      // get instance of temperature sensor
-W1Temp.getSensor(sensorsUids[i]).then(function (sensor[i]) {
+W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
 
   // print actual temperature
-  var temp[i] = sensor[i].getTemperature();
+  var temp[i] = sensor.getTemperature();
   //console.log('Actual temp:', temp, '°C');
 
   // print actual temperature on changed
-  sensor[i].on('change', function (temp) {
-    console.log('Temp changed '+i+': ', temp, '°C');
+  sensor.on('change', function (temp[i]) {
+    console.log('Temp changed '+i+': ', temp[i], '°C');
 
    // post api send temp
    var json = {
