@@ -1,22 +1,17 @@
 var request=require('request');
 
 var W1Temp = require('w1temp');
-var W2Temp = require('w2temp');
-W1Temp.setGpioData(6);
-W2Temp.getSensorsUids().then(function (sensorsUids2) {
-  console.log(sensorsUids2);
-});
 
 // turn on gpio pin 13 as W1 power if you want to
 W1Temp.setGpioPower(13);
 
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
-W1Temp.setGpioData(4);
+W1Temp.setGpioData(6);
 
 // print list of available sensors uids (ex.: [ '28-00000636a3e3' ])
-W1Temp.getSensorsUids().then(function (sensorsUids1) {
-  console.log(sensorsUids1);
+W1Temp.getSensorsUids().then(function (sensorsUids) {
+  console.log(sensorsUids);
 
 // get instance of temperature sensor
 W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
