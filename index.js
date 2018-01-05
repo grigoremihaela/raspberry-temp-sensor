@@ -48,7 +48,6 @@ W1Temp.getSensor('28-03177067f9ff').then(function (sensor) {
    });
    // post api send temp
    });
-
 });
 
 // get instance of temperature sensor
@@ -86,7 +85,7 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
    });
    // post api send temp
    });
-
+});
 /*
 // print list of available sensors uids (ex.: [ '28-00000636a3e3' ])
 W1Temp.getSensorsUids().then(function (sensorsUids) {
