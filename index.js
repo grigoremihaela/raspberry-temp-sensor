@@ -7,7 +7,7 @@ W1Temp.setGpioPower(13);
 
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
-W1Temp.setGpioData(17)
+W1Temp.setGpioData(6)
 
 W1Temp.getSensorsUids().then(function (sensorsUids) {
   console.log(sensorsUids);
