@@ -46,7 +46,7 @@ W1Temp.getSensor(sensorsUids1).then(function (sensor) {
     //console.log(err);
      if (res && (res.statusCode === 200 || res.statusCode === 201)) {
        //console.log(res.statusCode);
-       console.log(body);
+       //console.log(body);
      }
    });
    // post api send temp
@@ -87,7 +87,7 @@ W1Temp.getSensor(sensorsUids2).then(function (sensor) {
     //console.log(err);
      if (res && (res.statusCode === 200 || res.statusCode === 201)) {
        //console.log(res.statusCode);
-       console.log(body);
+       //console.log(body);
      }
    });
    // post api send temp
