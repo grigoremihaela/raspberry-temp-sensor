@@ -14,7 +14,7 @@ W1Temp.setGpioPower(27);
 W1Temp.setGpioData(27)
 
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids1) {
-  //console.log(sensorsUids1);
+  console.log(sensorsUids1);
 // get instance of temperature sensor1 '28-0316a1a16fff'
 W1Temp.getSensor(sensorsUids1).then(function (sensor) {
 
@@ -55,7 +55,7 @@ W1Temp.getSensor(sensorsUids1).then(function (sensor) {
 });
 
 W1Temp.getSensorsUids('w1_bus_master2').then(function (sensorsUids2) {
- // console.log(sensorsUids2);
+  console.log(sensorsUids2);
 // get instance of temperature sensor2  '28-03177067f9ff'
 W1Temp.getSensor(sensorsUids2).then(function (sensor) {
 
