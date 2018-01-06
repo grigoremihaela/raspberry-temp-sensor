@@ -9,7 +9,7 @@ W1Temp.setGpioPower(13);
 // if is not set by instructions above (required root permissions)
 W1Temp.setGpioData(6);
 
-W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
+W1Temp.getSensorsUids('w1_bus_master2').then(function (sensorsUids) {
   console.log(sensorsUids);
 });
 
