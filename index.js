@@ -51,7 +51,6 @@ W1Temp.getSensor(sensorsUids1).then(function (sensor) {
 
 W1Temp.getSensorsUids('w1_bus_master2').then(function (sensorsUids2) {
   console.log(sensorsUids2);
-});
 // get instance of temperature sensor '28-0316a1a16fff'
 W1Temp.getSensor(sensorsUids2).then(function (sensor) {
 
@@ -87,9 +86,8 @@ W1Temp.getSensor(sensorsUids2).then(function (sensor) {
    });
    // post api send temp
    });
-
 });
-
+});
 /*
 // print list of available sensors uids (ex.: [ '28-00000636a3e3' ])
 W1Temp.getSensorsUids().then(function (sensorsUids) {
