@@ -3,13 +3,27 @@ var request=require('request');
 var W1Temp = require('w1temp');
 
 // turn on gpio pin 13 as W1 power if you want to
-W1Temp.setGpioPower(13);
+W1Temp.setGpioPower(4);
 
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
-W1Temp.setGpioData(6);
+W1Temp.setGpioData(4);
 
 W1Temp.getSensorsUids().then(function (sensorsUids) {
+  console.log(sensorsUids);
+});
+
+
+var W2Temp = require('w1temp');
+
+// turn on gpio pin 13 as W1 power if you want to
+W2Temp.setGpioPower(17);
+
+// set gpio pin 6 to use as W1 data channel
+// if is not set by instructions above (required root permissions)
+W2Temp.setGpioData(17);
+
+W2Temp.getSensorsUids().then(function (sensorsUids) {
   console.log(sensorsUids);
 });
 
