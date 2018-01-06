@@ -14,8 +14,8 @@ W1Temp.setGpioPower(27);
 W1Temp.setGpioData(27)
 
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids1) {
-  console.log(sensorsUids1);
-// get instance of temperature sensor '28-03177067f9ff'
+  //console.log(sensorsUids1);
+// get instance of temperature sensor1 '28-0316a1a16fff'
 W1Temp.getSensor(sensorsUids1).then(function (sensor) {
 
   // print actual temperature
@@ -24,12 +24,12 @@ W1Temp.getSensor(sensorsUids1).then(function (sensor) {
 
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log('Temp changed 1:', temp, '°C ', sensorsUids1[0]);
+    //console.log('Temp changed 1:', temp, '°C ', sensorsUids1[0]);
 
    // post api send temp
    var json = {
      "temp": temp,
-     "sensorsUids": sensorsUids1[0]
+     "sensorsUids": 1
    };
    
    var options = {
@@ -55,8 +55,8 @@ W1Temp.getSensor(sensorsUids1).then(function (sensor) {
 });
 
 W1Temp.getSensorsUids('w1_bus_master2').then(function (sensorsUids2) {
-  console.log(sensorsUids2);
-// get instance of temperature sensor '28-0316a1a16fff'
+ // console.log(sensorsUids2);
+// get instance of temperature sensor2  '28-03177067f9ff'
 W1Temp.getSensor(sensorsUids2).then(function (sensor) {
 
   // print actual temperature
@@ -65,12 +65,12 @@ W1Temp.getSensor(sensorsUids2).then(function (sensor) {
 
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log('Temp changed 2:', temp, '°C ', sensorsUids2[0]);
+    //console.log('Temp changed 2:', temp, '°C ', sensorsUids2[0]);
 
    // post api send temp
    var json = {
      "temp": temp,
-     "sensorsUids": sensorsUids2[0]
+     "sensorsUids": 2
    };
    
    var options = {
