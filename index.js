@@ -7,8 +7,8 @@ var W1Temp = require('w1temp');
 
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
-W1Temp.setGpioData(17).then(function (gpioPin) {
-  console.log(gpioPin);
+W1Temp.setGpioData('hj').then(function (err) {
+  console.log(err);
 });
 
 W1Temp.getSensorsUids().then(function (sensorsUids) {
