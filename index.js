@@ -29,7 +29,7 @@ W1Temp.getSensor(sensorsUids1).then(function (sensor) {
    // post api send temp
    var json = {
      "temp": temp,
-     "sensorsUids": 1
+     "sensorsUids": "1"
    };
    
    var options = {
@@ -70,7 +70,7 @@ W1Temp.getSensor(sensorsUids2).then(function (sensor) {
    // post api send temp
    var json = {
      "temp": temp,
-     "sensorsUids": 2
+     "sensorsUids": "2"
    };
    
    var options = {
