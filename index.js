@@ -18,7 +18,7 @@ W1Temp.getSensor('28-0316a1a16fff').then(function (sensor) {
 
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log('Temp changed 0:', temp, '°C');
+    console.log('Temp changed 1:', temp, '°C');
 
    // post api send temp
    var json = {
@@ -56,7 +56,7 @@ W1Temp.getSensor('28-03177067f9ff').then(function (sensor) {
 
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log('Temp changed 0:', temp, '°C');
+    console.log('Temp changed 2:', temp, '°C');
 
    // post api send temp
    var json = {
@@ -84,6 +84,7 @@ W1Temp.getSensor('28-03177067f9ff').then(function (sensor) {
    });
 
 });
+
 /*
 // print list of available sensors uids (ex.: [ '28-00000636a3e3' ])
 W1Temp.getSensorsUids().then(function (sensorsUids) {
