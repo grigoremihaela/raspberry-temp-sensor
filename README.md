@@ -16,7 +16,7 @@ You can find the most recent version of this guide [here](https://github.com/gri
 
 ## Installing Raspbian
 
-How to install raspbian on raspberry pi.(https://www.raspberrypi.org/documentation/raspbian/)
+First install raspbian on raspberry pi.(https://www.raspberrypi.org/documentation/raspbian/)
 
 
 ## Set Raspberry 
