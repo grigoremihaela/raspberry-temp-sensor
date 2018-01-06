@@ -3,12 +3,10 @@ var request=require('request');
 var W1Temp = require('w1temp');
 
 // turn on gpio pin 13 as W1 power if you want to
-W1Temp.setGpioPower(4);
+// W1Temp.setGpioPower(13);
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
 W1Temp.setGpioData(4)
-// turn on gpio pin 13 as W1 power if you want to
-W1Temp.setGpioPower(17);
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
 W1Temp.setGpioData(17)
