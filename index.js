@@ -2,7 +2,7 @@ var request=require('request');
 
 var W1Temp = require('w1temp');
 
-var PIN = [17, 22];
+var PIN = [4, 22];
 
 for (var i = 0; i < PIN.length; i++) {
 // turn on gpio pin PIN[i] as W1 power if you want to
