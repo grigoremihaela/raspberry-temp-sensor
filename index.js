@@ -2,7 +2,7 @@ var request=require('request');
 
 var W1Temp = require('w1temp');
 
-var w1_bus_master = [w1_bus_master1, w1_bus_master2, w1_bus_master3];
+var w1_bus_master = ['w1_bus_master1', 'w1_bus_master2', 'w1_bus_master3'];
 
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(4);
