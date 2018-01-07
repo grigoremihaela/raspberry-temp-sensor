@@ -1,20 +1,22 @@
 var request=require('request');
 
 var W1Temp = require('w1temp');
-var W2Temp = require('w1temp');
-
-var PIN = [4, 22];
 
 // turn on gpio pin 13 as W1 power if you want to
-W1Temp.setGpioPower(PIN[0]);
+W1Temp.setGpioPower(4);
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
-W1Temp.setGpioData(PIN[0])
+W1Temp.setGpioData(4)
+// turn on gpio pin 13 as W1 power if you want to
+W1Temp.setGpioPower(22);
+// set gpio pin 6 to use as W1 data channel
+// if is not set by instructions above (required root permissions)
+W1Temp.setGpioData(22)
 
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids1) {
   console.log(sensorsUids1);
 // get instance of temperature sensor1 '28-0316a1a16fff'
-W1Temp.getSensor(sensorsUids1[0]).then(function (sensor) {
+W1Temp.getSensor(sensorsUids1).then(function (sensor) {
 
   // print actual temperature
   var temp = sensor.getTemperature();
@@ -52,16 +54,10 @@ W1Temp.getSensor(sensorsUids1[0]).then(function (sensor) {
 });
 });
 
-// turn on gpio pin 13 as W1 power if you want to
-W2Temp.setGpioPower(PIN[1]);
-// set gpio pin 6 to use as W1 data channel
-// if is not set by instructions above (required root permissions)
-W2Temp.setGpioData(PIN[1])
-
-W2Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids2) {
+W1Temp.getSensorsUids('w1_bus_master2').then(function (sensorsUids2) {
   console.log(sensorsUids2);
 // get instance of temperature sensor2  '28-03177067f9ff'
-W2Temp.getSensor(sensorsUids2[1]).then(function (sensor) {
+W1Temp.getSensor(sensorsUids2).then(function (sensor) {
 
   // print actual temperature
   var temp = sensor.getTemperature();
@@ -69,12 +65,12 @@ W2Temp.getSensor(sensorsUids2[1]).then(function (sensor) {
 
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log('Temp changed 2:', temp, '°C ', sensorsUids2[1]);
+    console.log('Temp changed 2:', temp, '°C ', sensorsUids2[0]);
 
    // post api send temp
    var json = {
      "temp": temp,
-     "sensorsUids": sensorsUids2[1]
+     "sensorsUids": sensorsUids2[0]
    };
    
    var options = {
