@@ -23,7 +23,7 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
 //W1Temp.setGpioData(27)
 
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-  console.log(sensorsUids);
+  console.log(sensorsUids.length);
   var i = 0;
   while (i < sensorsUids.length) {
 // get instance of temperature sensor
@@ -33,7 +33,9 @@ W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
   //console.log('Actual temp:', temp, '°C');
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log('Temp w1_bus_master1 ' + (i + 1) +' from pin 4:', temp, '°C ', sensorsUids[i]);
+    console.log(i);
+    console.log(sensorsUids[i]);
+    console.log('Temp w1_bus_master1 ' + i + ' from pin 4:', temp, '°C ', sensorsUids[i]);
    // start post api send temp
    var json = {
      "temp": temp,
