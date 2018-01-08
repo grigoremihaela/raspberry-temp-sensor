@@ -80,7 +80,7 @@ W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
 
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log('Temp from pin 17:', temp, '°C ', sensorsUids[0]);
+    console.log('Temp from pin 14:', temp, '°C ', sensorsUids[0]);
 
    // post api send temp
    var json = {
@@ -112,7 +112,7 @@ W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
 });
 });
 
-W1Temp.getSensorsUids('w1_bus_master12').then(function (sensorsUids) {
+W1Temp.getSensorsUids('w1_bus_master19').then(function (sensorsUids) {
   console.log(sensorsUids);
 // get instance of temperature sensor2  '28-03177067f9ff'
 W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
