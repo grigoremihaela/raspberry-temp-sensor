@@ -24,27 +24,25 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
 
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   console.log(sensorsUids);
-sensorsUids.forEach(function(element, i) {
-    console.log(i, '  ', element);
-if(sensorsUids[i] !== ''){
-// get instance of temperature sensor
-W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
-  console.log(sensorsUids[i])
+// get instance of temperature sensor2  '28-03177067f9ff'
+W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
+
   // print actual temperature
   var temp = sensor.getTemperature();
   //console.log('Actual temp:', temp, '°C');
+
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log(i);
-    console.log(sensorsUids[i]);
-    console.log('Temp w1_bus_master1 ' + i + ' from pin 4:', temp, '°C ', sensorsUids[i]);
-   // start post api send temp
+    console.log('Temp from pin 4/1:', temp, '°C ', sensorsUids[0]);
+
+   // post api send temp
    var json = {
      "temp": temp,
-     "sensorsUids": sensorsUids[i],
-     "pin": 4,
-     "numberSensor": i
-   };  
+     "sensorsUids": sensorsUids[0],
+     "pin": 17,
+     "numberSensor": 1
+   };
+   
    var options = {
      //url: 'http://192.168.1.7:3001/temperature',
      url: 'http://pi-temp-api.herokuapp.com/temperature',
@@ -54,17 +52,137 @@ W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
      },
      json: json
    };
+
    request(options, function(err, res, body) {
     //console.log(err);
      if (res && (res.statusCode === 200 || res.statusCode === 201)) {
+       //console.log(res.statusCode);
        //console.log(body);
      }
-   }); // end request
-   // end post api send temp
-   }); // end sensor.on
-}); // end W1Temp.getSensor
-} // end if
-}); //end forEach
+   });
+   // post api send temp
+   });
+});
+
+// get instance of temperature sensor2  '28-03177067f9ff'
+W1Temp.getSensor(sensorsUids[1]).then(function (sensor) {
+
+  // print actual temperature
+  var temp = sensor.getTemperature();
+  //console.log('Actual temp:', temp, '°C');
+
+  // print actual temperature on changed
+  sensor.on('change', function (temp) {
+    console.log('Temp from pin 4/2:', temp, '°C ', sensorsUids[1]);
+
+   // post api send temp
+   var json = {
+     "temp": temp,
+     "sensorsUids": sensorsUids[1],
+     "pin": 17,
+     "numberSensor": 2
+   };
+   
+   var options = {
+     //url: 'http://192.168.1.7:3001/temperature',
+     url: 'http://pi-temp-api.herokuapp.com/temperature',
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     json: json
+   };
+
+   request(options, function(err, res, body) {
+    //console.log(err);
+     if (res && (res.statusCode === 200 || res.statusCode === 201)) {
+       //console.log(res.statusCode);
+       //console.log(body);
+     }
+   });
+   // post api send temp
+   });
+});
+
+// get instance of temperature sensor2  '28-03177067f9ff'
+W1Temp.getSensor(sensorsUids[2]).then(function (sensor) {
+
+  // print actual temperature
+  var temp = sensor.getTemperature();
+  //console.log('Actual temp:', temp, '°C');
+
+  // print actual temperature on changed
+  sensor.on('change', function (temp) {
+    console.log('Temp from pin 4/3:', temp, '°C ', sensorsUids[2]);
+
+   // post api send temp
+   var json = {
+     "temp": temp,
+     "sensorsUids": sensorsUids[2],
+     "pin": 17,
+     "numberSensor": 3
+   };
+   
+   var options = {
+     //url: 'http://192.168.1.7:3001/temperature',
+     url: 'http://pi-temp-api.herokuapp.com/temperature',
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     json: json
+   };
+
+   request(options, function(err, res, body) {
+    //console.log(err);
+     if (res && (res.statusCode === 200 || res.statusCode === 201)) {
+       //console.log(res.statusCode);
+       //console.log(body);
+     }
+   });
+   // post api send temp
+   });
+});
+
+// get instance of temperature sensor2  '28-03177067f9ff'
+W1Temp.getSensor(sensorsUids[3]).then(function (sensor) {
+
+  // print actual temperature
+  var temp = sensor.getTemperature();
+  //console.log('Actual temp:', temp, '°C');
+
+  // print actual temperature on changed
+  sensor.on('change', function (temp) {
+    console.log('Temp from pin 4/4:', temp, '°C ', sensorsUids[3]);
+
+   // post api send temp
+   var json = {
+     "temp": temp,
+     "sensorsUids": sensorsUids[3],
+     "pin": 17,
+     "numberSensor": 4
+   };
+   
+   var options = {
+     //url: 'http://192.168.1.7:3001/temperature',
+     url: 'http://pi-temp-api.herokuapp.com/temperature',
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     json: json
+   };
+
+   request(options, function(err, res, body) {
+    //console.log(err);
+     if (res && (res.statusCode === 200 || res.statusCode === 201)) {
+       //console.log(res.statusCode);
+       //console.log(body);
+     }
+   });
+   // post api send temp
+   });
+});
 }); // W1Temp.getSensorsUids('w1_bus_master1')
 
 W1Temp.getSensorsUids('w1_bus_master10').then(function (sensorsUids) {
