@@ -25,7 +25,7 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   console.log(sensorsUids.length);
   var i = 0;
-  while (i < sensorsUids.length) {
+  while (i < (sensorsUids.length) ) { 
 // get instance of temperature sensor
 W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
   // print actual temperature
