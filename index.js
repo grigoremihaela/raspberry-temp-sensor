@@ -26,9 +26,10 @@ W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   console.log(sensorsUids);
 sensorsUids.forEach(function(element, i) {
     console.log(i, '  ', element);
-if(sensorsUids[i]){
+if(sensorsUids[i] !== ''){
 // get instance of temperature sensor
 W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
+  console.log(sensorsUids[i])
   // print actual temperature
   var temp = sensor.getTemperature();
   //console.log('Actual temp:', temp, '°C');
