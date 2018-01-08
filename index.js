@@ -23,8 +23,10 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
 //W1Temp.setGpioData(27)
 
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-  console.log(sensorsUids.length);
-  var i = 0;
+  console.log(sensorsUids);
+sensorsUids.forEach(function(element, index) {
+    console.log(index, '  ', element);
+});
   while (i < (sensorsUids.length) ) { 
 // get instance of temperature sensor
 W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
@@ -57,10 +59,10 @@ W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
      if (res && (res.statusCode === 200 || res.statusCode === 201)) {
        //console.log(body);
      }
-   });
+   }); // end request
    // end post api send temp
-   });
-});
+   }); // end sensor.on
+}); // end W1Temp.getSensor
     i++;
   } // end while
 
