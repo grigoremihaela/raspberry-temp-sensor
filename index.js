@@ -79,7 +79,7 @@ W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
 
   // print actual temperature on changed
   sensor.on('change', function (temp) {
-    console.log('Temp from pin 14:', temp, '°C ', sensorsUids[0]);
+    console.log('Temp from pin 17:', temp, '°C ', sensorsUids[0]);
 
    // post api send temp
    var json = {
