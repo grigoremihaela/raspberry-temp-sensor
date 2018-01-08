@@ -67,7 +67,6 @@ W1Temp.getSensor(value).then(function (sensor) {
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   console.log(sensorsUids);
   sensorsUids.forEach(ShowResults);
-  //sensorsUids.forEach(function(value, index) { showResults(value, index) });
 }); // end W1Temp.getSensorsUids('w1_bus_master1')
 
 W1Temp.getSensorsUids('w1_bus_master10').then(function (sensorsUids) {
@@ -155,4 +154,3 @@ W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
    });
 });
 });
-
