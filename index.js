@@ -151,3 +151,4 @@ W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
    });
 });
 });
+
