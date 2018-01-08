@@ -39,7 +39,7 @@ W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
    var json = {
      "temp": temp,
      "sensorsUids": sensorsUids[0],
-     "pin": 17,
+     "pin": 4,
      "numberSensor": 1
    };
    
@@ -79,7 +79,7 @@ W1Temp.getSensor(sensorsUids[1]).then(function (sensor) {
    var json = {
      "temp": temp,
      "sensorsUids": sensorsUids[1],
-     "pin": 17,
+     "pin": 4,
      "numberSensor": 2
    };
    
@@ -119,7 +119,7 @@ W1Temp.getSensor(sensorsUids[2]).then(function (sensor) {
    var json = {
      "temp": temp,
      "sensorsUids": sensorsUids[2],
-     "pin": 17,
+     "pin": 4,
      "numberSensor": 3
    };
    
@@ -159,7 +159,7 @@ W1Temp.getSensor(sensorsUids[3]).then(function (sensor) {
    var json = {
      "temp": temp,
      "sensorsUids": sensorsUids[3],
-     "pin": 17,
+     "pin": 4,
      "numberSensor": 4
    };
    
