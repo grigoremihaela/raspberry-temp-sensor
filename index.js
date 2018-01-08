@@ -2,12 +2,11 @@ var request=require('request');
 
 var W1Temp = require('w1temp');
 
-var PIN = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22]
 
 var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
                      'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
-                     'w1_bus_master11', 'w1_bus_master12', 'w1_bus_master13', 'w1_bus_master14', 'w1_bus_master15', 
-                     'w1_bus_master16', 'w1_bus_master17', 'w1_bus_master18', 'w1_bus_master19'
+                     'w1_bus_master11'
                      ];
 
 // turn on gpio pin 13 as W1 power if you want to
@@ -68,7 +67,7 @@ W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   sensorsUids.forEach(ShowResults);
 }); // end W1Temp.getSensorsUids('w1_bus_master1')
 
-W1Temp.getSensorsUids('w1_bus_master2').then(function (sensorsUids) {
+W1Temp.getSensorsUids('w1_bus_master8').then(function (sensorsUids) {
   console.log(sensorsUids);
 // get instance of temperature sensor2  '28-03177067f9ff'
 W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
@@ -111,7 +110,7 @@ W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
 });
 });
 
-W1Temp.getSensorsUids('w1_bus_master3').then(function (sensorsUids) {
+W1Temp.getSensorsUids('w1_bus_master11').then(function (sensorsUids) {
   console.log(sensorsUids);
 // get instance of temperature sensor2  '28-03177067f9ff'
 W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
