@@ -24,9 +24,8 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
 
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   console.log(sensorsUids);
-sensorsUids.forEach(function(element, j) {
-    console.log(j, '  ', element);
-    var i = j - 1;
+sensorsUids.forEach(function(element, i) {
+    console.log(i, '  ', element);
 // get instance of temperature sensor
 W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
   // print actual temperature
@@ -62,7 +61,6 @@ W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
    // end post api send temp
    }); // end sensor.on
 }); // end W1Temp.getSensor
-    i++;
 }); //end forEach
 }); // W1Temp.getSensorsUids('w1_bus_master1')
 
