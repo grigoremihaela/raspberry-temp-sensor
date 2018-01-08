@@ -26,6 +26,7 @@ W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   console.log(sensorsUids);
 sensorsUids.forEach(function(element, i) {
     console.log(i, '  ', element);
+if(sensorsUids[i]){
 // get instance of temperature sensor
 W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
   // print actual temperature
@@ -41,7 +42,7 @@ W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
      "temp": temp,
      "sensorsUids": sensorsUids[i],
      "pin": 4,
-     "numberSensor": (i + 1)
+     "numberSensor": i
    };  
    var options = {
      //url: 'http://192.168.1.7:3001/temperature',
@@ -61,6 +62,7 @@ W1Temp.getSensor(sensorsUids[i]).then(function (sensor) {
    // end post api send temp
    }); // end sensor.on
 }); // end W1Temp.getSensor
+} // end if
 }); //end forEach
 }); // W1Temp.getSensorsUids('w1_bus_master1')
 
