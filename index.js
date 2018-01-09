@@ -33,9 +33,10 @@ PIN.forEach(function(pin, bus) {
       }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
+  console.log(pinBus[i]);
   i++;
 }); // end PIN.forEach
-console.log(pinBus[0]);
+console.log(this.pinBus);
 /*
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
