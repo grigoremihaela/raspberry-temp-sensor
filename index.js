@@ -22,9 +22,10 @@ function addNewObjToPinBus(pin, bus, w1BusMaster[bus], i, pinBus) {
 };
 
 PIN.forEach(function(pin, bus) {
-  W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+  var w1BusMaster = w1BusMaster[bus];
+  W1Temp.getSensorsUids(w1BusMaster).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
-      W1Temp.getSensor(value).addNewObjToPinBus(pin, bus, w1BusMaster[bus], i, pinBus);
+      W1Temp.getSensor(value).addNewObjToPinBus(pin, bus, w1BusMaster, i, pinBus);
       console.log(i);
       console.log('pinBus2', pinBus);
     }); // end sensorsUids.forEach
