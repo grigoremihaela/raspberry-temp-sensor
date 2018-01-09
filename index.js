@@ -31,8 +31,7 @@ PIN.forEach(function(pin, bus) {
         console.log(pin, '   ', w1BusMaster[bus]);
         pinBusObj.pin = pin;
         pinBusObj.busMaster = w1BusMaster[bus];
-        pinBus.push(pinBusObj);
-        console.log('pinBus: ', pinBus);
+        pinBus[bus] = pinBusObj;
       }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
