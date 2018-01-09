@@ -1,7 +1,7 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 
-export default function SendTempApi(value, index) {  
+function SendTempApi(value, index) {  
 // get instance of temperature sensor2  '28-03177067f9ff'
 W1Temp.getSensor(value).then(function (sensor) {
 
