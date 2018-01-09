@@ -7,14 +7,10 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
-pinBus = [];                 
-i = 0; 
+var pinBus = [];                 
+var i = 0; 
 
-PIN.forEach(function(pin, bus) {
-  W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
-    sensorsUids.forEach(function(value, index) {
-      W1Temp.getSensor(value).then(function (sensor) {
-        console.log(pin, '   ', w1BusMaster[bus]);
+function addNewObjToPinBus(pin, bus, w1BusMaster[bus], i, pinBus) {
         if (i==0) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           i++;
@@ -23,13 +19,17 @@ PIN.forEach(function(pin, bus) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           i++;
         };
-        console.log('pinBus1', pinBus);
-      }); // end W1Temp.getSensor
+};
+
+PIN.forEach(function(pin, bus) {
+  W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+    sensorsUids.forEach(function(value, index) {
+      W1Temp.getSensor(value).addNewObjToPinBus(pin, bus, w1BusMaster[bus], i, pinBus);
+      console.log(i);
+      console.log('pinBus2', pinBus);
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-console.log(i);
-console.log('pinBus2', pinBus);
 
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(4);
