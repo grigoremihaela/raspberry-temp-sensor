@@ -36,7 +36,7 @@ PIN.forEach(function(pin, bus) {
   i++;
 }); // end PIN.forEach
 console.log(pinBus);
-
+/*
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
@@ -44,3 +44,22 @@ PIN.forEach(function(pin, bus) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
+*/
+W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
+  //console.log(sensorsUids);
+  sensorsUids.forEach(function(value, index) {
+    temp.SendTempApi(value, index, 4);
+  });
+}); // end W1Temp.getSensorsUids('w1_bus_master1')
+
+W1Temp.getSensorsUids('w1_bus_master8').then(function (sensorsUids) {
+  //console.log(sensorsUids);
+  // get instance of temperature sensor
+  temp.SendTempApi(sensorsUids[0], 0, 17)
+});
+
+W1Temp.getSensorsUids('w1_bus_master11').then(function (sensorsUids) {
+  //console.log(sensorsUids);
+  // get instance of temperature sensor
+  temp.SendTempApi(sensorsUids[0], 0, 22)
+});
