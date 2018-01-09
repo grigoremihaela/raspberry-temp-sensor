@@ -24,9 +24,8 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
 
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   //console.log(sensorsUids);
-  var pin = 4;
-  sensorsUids.forEach(function(value, index, pin) {
-    temp.SendTempApi(value, index, pin);
+  sensorsUids.forEach(function(value, index) {
+    temp.SendTempApi(value, index, 4);
   });
 }); // end W1Temp.getSensorsUids('w1_bus_master1')
 
