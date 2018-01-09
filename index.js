@@ -23,12 +23,12 @@ PIN.forEach(function(pin, bus) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           i++;
         };
-        global.pinBus = pinBus;
+        console.log(pinBus);
       }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-console.log(pinBus);
+
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(4);
 // set gpio pin 6 to use as W1 data channel
