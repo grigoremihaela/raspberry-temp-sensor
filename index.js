@@ -9,7 +9,8 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
-function () {
+
+//var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, {'pin': 17, 'busMaster': 'w1_bus_master8'}, {'pin': 22, 'busMaster': 'w1_bus_master11'}];
 var pinBus = [];
 i = 0;
 // turn on gpio pin 13 as W1 power if you want to
@@ -22,6 +23,7 @@ i = 0;
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
 //W1Temp.setGpioData(27)
+
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
@@ -36,10 +38,11 @@ PIN.forEach(function(pin, bus) {
           i++;
         };
       }); // end W1Temp.getSensor
+      console.log('pinBus: ', pinBus);
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-console.log('pinBus: ', pinBus);
+
 /*
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
@@ -67,4 +70,3 @@ W1Temp.getSensorsUids('w1_bus_master11').then(function (sensorsUids) {
   // get instance of temperature sensor
   temp.SendTempApi(sensorsUids[0], 0, 22)
 });
-};
