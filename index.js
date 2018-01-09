@@ -30,11 +30,11 @@ W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
 W1Temp.getSensorsUids('w1_bus_master8').then(function (sensorsUids) {
   //console.log(sensorsUids);
   // get instance of temperature sensor
-  temp.SendTempApi(sensorsUids[0], 1, 17)
+  temp.SendTempApi(sensorsUids[0], 0, 17)
 });
 
 W1Temp.getSensorsUids('w1_bus_master11').then(function (sensorsUids) {
   //console.log(sensorsUids);
   // get instance of temperature sensor
-  temp.SendTempApi(sensorsUids[0], 1, 22)
+  temp.SendTempApi(sensorsUids[0], 0, 22)
 });
