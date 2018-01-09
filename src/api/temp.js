@@ -40,6 +40,6 @@ W1Temp.getSensor(value).then(function (sensor) {
      }
    });
    // post api send temp
-   });
-  });
-}  // end ShowResults
+   }); // end sensor.on('change')
+  }); // end W1Temp.getSensor
+}  // end SendTempApi
