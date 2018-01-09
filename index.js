@@ -9,6 +9,7 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
+
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(4);
 // set gpio pin 6 to use as W1 data channel
@@ -20,18 +21,21 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
 // if is not set by instructions above (required root permissions)
 //W1Temp.setGpioData(27)
 
-PIN.forEach(function(pin, noBus) {
-  W1Temp.getSensorsUids(w1BusMaster[noBus]).then(function (sensorsUids) {
-    if (sensorsUids) {
-      console.log(pin, '   ', w1BusMaster[noBus]);
-    } else{
-      console.log('not pin ', w1BusMaster[noBus]);
-    };
+PIN.forEach(function(pin, bus) {
+  W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+    const file = '/sys/bus/w1/devices/' + w1BusMaster[bus] + '/w1_master_slaves';
+    fileExistsWait(file)
+      .then(() => {
+        console.log(pin, '   ', w1BusMaster[bus]);
+      })
+      .catch(() => {
+        console.log('not pin ', w1BusMaster[bus]);
+    });
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
 
-PIN.forEach(function(pin, noBus) {
-  W1Temp.getSensorsUids(w1BusMaster[noBus]).then(function (sensorsUids) {
+PIN.forEach(function(pin, bus) {
+  W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
       temp.SendTempApi(value, index, pin);
     }); // end sensorsUids.forEach
