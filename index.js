@@ -24,9 +24,13 @@ PIN.forEach(function(pin, bus) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           i++;
         };
+        return pinBus;
       }); // end W1Temp.getSensor
+      return pinBus;
     }); // end sensorsUids.forEach
+    return pinBus;
   }); // end W1Temp.getSensorsUids
+  return pinBus;
 }); // end PIN.forEach
 
 return pinBus;
