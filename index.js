@@ -28,10 +28,6 @@ PIN.forEach(function(pin, bus) {
     sensorsUids.forEach(function(value, index) {
       W1Temp.getSensor(value).then(function (sensor) {
         console.log(pin, '   ', w1BusMaster[bus]);
-        var pinBusAdd = {pin: w1BusMaster[bus]};
-        console.log(pinBus);
-        Object.assign(pinBus, pinBusAdd); 
-        console.log(pinBus);
       }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
