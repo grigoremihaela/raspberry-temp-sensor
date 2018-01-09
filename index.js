@@ -44,7 +44,7 @@ PIN.forEach(function(pin, bus) {
 }); // end PIN.forEach
 */
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-  console.log(pinBus);
+  console.log('pinBus: ', pinBus);
   //console.log(sensorsUids);
   sensorsUids.forEach(function(value, index) {
     temp.SendTempApi(value, index, 4);
