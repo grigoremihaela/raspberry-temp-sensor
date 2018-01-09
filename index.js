@@ -10,23 +10,21 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
 var pinBus = [];                 
 var i = 0; 
 
-function addNewObjToPinBus(pin, bus, w1BusMaster, i, pinBus) {
-        if (i==0) {
-          pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster };
-          i++;
-        };
-        if (i>0 && pinBus[i-1].pin!=pin) {
-          pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster };
-          i++;
-        };
-};
-
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
-      W1Temp.getSensor(value).addNewObjToPinBus(pin, bus, w1BusMaster[bus], i, pinBus);
-      console.log(i);
-      console.log('pinBus2', pinBus);
+      W1Temp.getSensor(value).then(function (sensor) {
+        console.log(pin, '   ', w1BusMaster[bus]);
+        if (i==0) {
+          pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+          i++;
+        };
+        if (i>0 && pinBus[i-1].pin!=pin) {
+          pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+          i++;
+        };
+        console.log(pinBus);
+      }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
