@@ -1,7 +1,7 @@
 var request=require('request');
 var W1Temp = require('../../node_modules/w1temp');
 
-module.exports.SendTempApi  = function (value, index) {  
+module.exports.SendTempApi  = function (value, index, pin) {  
   console.log('succes ', index, ': ', value);
 // get instance of temperature sensor2  '28-03177067f9ff'
 W1Temp.getSensor(value).then(function (sensor) {
@@ -18,7 +18,7 @@ W1Temp.getSensor(value).then(function (sensor) {
    var json = {
      "temp": temp,
      "sensorsUids": value,
-     "pin": 4,
+     "pin": pin,
      "numberSensor": (index + 1)
    };
    
