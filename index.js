@@ -12,7 +12,6 @@ i = 0;
 
 function GetPinBus() { 
 PIN.forEach(function(pin, bus) {
-  W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
         console.log(pin, '   ', w1BusMaster[bus]);
         if (i==0) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
@@ -23,9 +22,9 @@ PIN.forEach(function(pin, bus) {
           i++;
         };
 }); // end PIN.forEach
-
 return pinBus;
 }
+
 var pinBus = new GetPinBus();
 console.log(pinBus);
 // turn on gpio pin 13 as W1 power if you want to
