@@ -12,6 +12,7 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
 
 //var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, {'pin': 17, 'busMaster': 'w1_bus_master8'}, {'pin': 22, 'busMaster': 'w1_bus_master11'}];
 var pinBus = [];
+var pinBusObj = {};
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(4);
 // set gpio pin 6 to use as W1 data channel
@@ -28,7 +29,10 @@ PIN.forEach(function(pin, bus) {
     sensorsUids.forEach(function(value, index) {
       W1Temp.getSensor(value).then(function (sensor) {
         console.log(pin, '   ', w1BusMaster[bus]);
-        pinBus.push({'pin': pin, 'busMaster': w1BusMaster[bus]});
+        pinBusObj.pin = pin;
+        pinBusObj.busMaster = w1BusMaster[bus];
+        pinBus.push(pinBusObj);
+        console.log('pinBus: ', pinBus);
       }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
