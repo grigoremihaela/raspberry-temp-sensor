@@ -29,7 +29,7 @@ PIN.forEach(function(pin, bus) {
       W1Temp.getSensor(value).then(function (sensor) {
         console.log(pin, '   ', w1BusMaster[bus]);
         var pinBusAdd = {pin: w1BusMaster[bus]};
-        var pinBus = Object.assign(pinBus, pinBusAdd); 
+        Object.assign(pinBus, pinBusAdd); 
       }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
