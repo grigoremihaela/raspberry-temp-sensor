@@ -1,7 +1,7 @@
 var request=require('request');
 var W1Temp = require('../../node_modules/w1temp');
 
-var SendTempApi = function SendTempApi(value, index) {  
+module.exports.SendTempApi  = function (value, index) {  
   console.log('succes ', index, ': ', value);
 // get instance of temperature sensor2  '28-03177067f9ff'
 W1Temp.getSensor(value).then(function (sensor) {
@@ -43,5 +43,3 @@ W1Temp.getSensor(value).then(function (sensor) {
    });
   });
 }  // end ShowResults
-
-module.exports = SendTempApi;
