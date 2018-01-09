@@ -27,7 +27,7 @@ return pinBus;
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
-      GetPinBus1;
+      GetPinBus1();
       var pinBus = new GetPinBus();
       console.log(pinBus);
     }); // end sensorsUids.forEach
