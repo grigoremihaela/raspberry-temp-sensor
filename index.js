@@ -22,7 +22,16 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
 
 PIN.forEach(function(pin, noBus) {
   W1Temp.getSensorsUids(w1BusMaster[noBus]).then(function (sensorsUids) {
-    console.log(w1BusMaster[noBus]);
+    if (sensorsUids) {
+      console.log(pin, '   ', w1BusMaster[noBus]);
+    } else{
+      console.log('not pin ', w1BusMaster[noBus]);
+    };
+  }); // end W1Temp.getSensorsUids
+}); // end PIN.forEach
+
+PIN.forEach(function(pin, noBus) {
+  W1Temp.getSensorsUids(w1BusMaster[noBus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
       temp.SendTempApi(value, index, pin);
     }); // end sensorsUids.forEach
