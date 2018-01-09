@@ -1,7 +1,6 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp=require('./src/api/temp');
-var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, {'pin': 17, 'busMaster': 'w1_bus_master8'}, {'pin': 22, 'busMaster': 'w1_bus_master11'}];
 
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(4);
@@ -14,7 +13,9 @@ var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, {'pin': 17, 'busMaster'
 // if is not set by instructions above (required root permissions)
 //W1Temp.setGpioData(27)
 
-// v3
+/*
+// v3 not working?
+var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, {'pin': 17, 'busMaster': 'w1_bus_master8'}, {'pin': 22, 'busMaster': 'w1_bus_master11'}];
 pinBus.forEach(function(obj, index) {
   var pin = obj.pin;
   var bus = obj.busMaster;
@@ -24,8 +25,10 @@ pinBus.forEach(function(obj, index) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
+*/
 
-/* v2
+/* 
+//v2
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
@@ -34,7 +37,8 @@ PIN.forEach(function(pin, bus) {
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
 */
-/* v1
+
+//v1
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   //console.log(sensorsUids);
   sensorsUids.forEach(function(value, index) {
@@ -53,4 +57,3 @@ W1Temp.getSensorsUids('w1_bus_master11').then(function (sensorsUids) {
   // get instance of temperature sensor
   temp.SendTempApi(sensorsUids[0], 0, 22)
 });
-*/
