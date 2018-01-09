@@ -35,7 +35,7 @@ PIN.forEach(function(pin, bus) {
           console.log('pinBus: ', pinBus);
           i++;
         };
-        if (i>0 && pinBus[i-1]!=pin) {
+        if (i>0 && pinBus[i-1].pin!=pin) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           console.log('pinBus: ', pinBus);
           i++;
