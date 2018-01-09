@@ -1,4 +1,4 @@
-var temp=require('src/api/temp');
+var temp=require('./src/api/temp');
 var request=require('request');
 
 var W1Temp = require('w1temp');
