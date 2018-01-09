@@ -24,7 +24,7 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     const file = '/sys/bus/w1/devices/' + w1BusMaster[bus] + '/w1_master_slaves';
-    fileExistsWait(file)
+    W1Temp.fileExistsWait(file)
       .then(() => {
         console.log(pin, '   ', w1BusMaster[bus]);
       })
