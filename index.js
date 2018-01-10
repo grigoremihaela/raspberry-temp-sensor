@@ -40,8 +40,8 @@ const calculatePinBus = new Promise((res, reject) => {
   }); // end PIN.forEach
 });
 async function doIt() {
-  const pinBus = await calculatePinBus();
-  console.log('pinBus: ', pinBus);
+  const pinBus = await calculatePinBus()
+  console.log('pinBus: ', pinBus)
 };
 /*
 var getPinBus=require('./src/getPinBus');
