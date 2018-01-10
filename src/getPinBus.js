@@ -8,7 +8,7 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
 var pinBus = [];
 i = 0; 
 
-module.exports.GetPinBus  = function () { 
+module.exports.GetPinBus  = function (pinBus) { 
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
