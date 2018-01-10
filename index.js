@@ -17,6 +17,10 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
                      'w1_bus_master16', 'w1_bus_master17', 'w1_bus_master18', 'w1_bus_master19', 'w1_bus_master20', 
                      'w1_bus_master21', 'w1_bus_master22', 'w1_bus_master23', 'w1_bus_master24', 'w1_bus_master25', 
                      'w1_bus_master26'];
+var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
+              {'pin': 17, 'busMaster': 'w1_bus_master8'}, 
+              {'pin': 22, 'busMaster': 'w1_bus_master11'}
+              ];
 */
 new Promise(function(resolve, reject) {
   PIN.forEach(function(pin, bus) {
@@ -40,8 +44,19 @@ new Promise(function(resolve, reject) {
   }); // end PIN.forEach
 })
 .then(function(pinBus) {
-  console.log('pinBus 1: ', pinBus);
+  console.log('pinBus: ', pinBus);
+  // v3  too slowly?
+  pinBus.forEach(function(pinBusMaster) {
+    var pin = pinBusMaster.pin;
+    var bus = pinBusMaster.busMaster;
+    W1Temp.getSensorsUids(bus).then(function (sensorsUids) {
+      sensorsUids.forEach(function(value, index) {
+        temp.SendTempApi(value, index, pin);
+      }); // end sensorsUids.forEach
+    }); // end W1Temp.getSensorsUids
+  }); // end PIN.forEach
 });
+
 /*
 const calculatePinBus = new Promise((res, reject) => {
   PIN.forEach(function(pin, bus) {
@@ -81,21 +96,6 @@ console.log('pinBus: ', pinBus);  // []
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
 //W1Temp.setGpioData(6)
-
-// v3  too slowly?
-var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
-              {'pin': 17, 'busMaster': 'w1_bus_master8'}, 
-              {'pin': 22, 'busMaster': 'w1_bus_master11'}
-              ];
-pinBus.forEach(function(pinBusMaster) {
-  var pin = pinBusMaster.pin;
-  var bus = pinBusMaster.busMaster;
-  W1Temp.getSensorsUids(bus).then(function (sensorsUids) {
-    sensorsUids.forEach(function(value, index) {
-      temp.SendTempApi(value, index, pin);
-    }); // end sensorsUids.forEach
-  }); // end W1Temp.getSensorsUids
-}); // end PIN.forEach
 
 /*
 //v1
