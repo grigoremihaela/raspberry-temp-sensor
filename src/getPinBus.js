@@ -28,6 +28,6 @@ PIN.forEach(function(pin, bus) {
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, {'pin': 17, 'busMaster': 'w1_bus_master8'}, {'pin': 22, 'busMaster': 'w1_bus_master11'}];
-console.log('pinBus 2: ', pinBus); // []
+//console.log('pinBus 2: ', pinBus); // []
 return pinBus;
 }
