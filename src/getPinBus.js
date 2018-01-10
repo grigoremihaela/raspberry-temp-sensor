@@ -27,6 +27,5 @@ PIN.forEach(function(pin, bus) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-console.log('pinBus 2: ', pinBus); // []
 return pinBus;
 }
