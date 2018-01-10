@@ -13,11 +13,11 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
                      'w1_bus_master26'];
 */
 
-/*
+
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
 console.log('pinBus: ', pinBus);  // []
-*/
+
 
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(13);
