@@ -17,7 +17,7 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
                      'w1_bus_master16', 'w1_bus_master17', 'w1_bus_master18', 'w1_bus_master19', 'w1_bus_master20', 
                      'w1_bus_master21', 'w1_bus_master22', 'w1_bus_master23', 'w1_bus_master24', 'w1_bus_master25', 
                      'w1_bus_master26'];
-
+*/
 new Promise(function(resolve, reject) {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
@@ -40,7 +40,7 @@ new Promise(function(resolve, reject) {
   }); // end PIN.forEach
 })
 .then(function(pinBus) {
-  console.log('pinBus: ', pinBus);
+  console.log('pinBus 1: ', pinBus);
 });
 const calculatePinBus = new Promise((res, reject) => {
   PIN.forEach(function(pin, bus) {
@@ -64,16 +64,15 @@ const calculatePinBus = new Promise((res, reject) => {
   }); // end PIN.forEach
 });
 async function doIt() {
-  pinBus = await calculatePinBus();
-  console.log('pinBus: ', pinBus);
+  //pinBus = await calculatePinBus();
+  console.log('pinBus 2: ', await calculatePinBus());
 };
 doIt();
-*/
-
+/*
 var getPinBus=require('./src/getPinBus');
-pinBus = getPinBus.GetPinBus();
+var pinBus = getPinBus.GetPinBus();
 console.log('pinBus: ', pinBus);  // []
-
+*/
 
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(13);
