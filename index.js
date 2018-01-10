@@ -25,7 +25,7 @@ PIN.forEach(function(pin, bus) {
           i++;
         };
       }); // end W1Temp.getSensor
-      pinBus[i-1] = getPinBus();
+      getPinBus(pinBus, i);
       console.log(pinBus);
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
