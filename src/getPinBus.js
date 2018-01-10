@@ -14,7 +14,7 @@ return new Promise((resolve, reject) => {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       sensorsUids.forEach(function(value, index) {
         W1Temp.getSensor(value).then(function (sensor) {
-          //console.log(pin, '   ', w1BusMaster[bus]);
+          console.log(pin, '   ', w1BusMaster[bus]);
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
@@ -24,10 +24,64 @@ return new Promise((resolve, reject) => {
             i++;
           };
           resolve(pinBus);
-          //console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
+          console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
         }); // end W1Temp.getSensor
       }); // end sensorsUids.forEach
     }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
 });
 }
+
+/*
+new Promise(function(res, reject) {
+  PIN.forEach(function(pin, bus) {
+    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+      sensorsUids.forEach(function(value, index) {
+        W1Temp.getSensor(value).then(function (sensor) {
+          //console.log(pin, '   ', w1BusMaster[bus]);
+          if (i==0) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          if (i>0 && pinBus[i-1].pin!=pin) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          res(pinBus);
+          //console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
+        }); // end W1Temp.getSensor
+      }); // end sensorsUids.forEach
+    }); // end W1Temp.getSensorsUids
+  }); // end PIN.forEach
+})
+.then(function(pinBus) {
+  console.log('pinBus 1: ', pinBus);
+});
+
+const calculatePinBus = new Promise((res, reject) => {
+  PIN.forEach(function(pin, bus) {
+    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+      sensorsUids.forEach(function(value, index) {
+        W1Temp.getSensor(value).then(function (sensor) {
+          //console.log(pin, '   ', w1BusMaster[bus]);
+          if (i==0) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          if (i>0 && pinBus[i-1].pin!=pin) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          res(pinBus);
+          console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
+        }); // end W1Temp.getSensor
+      }); // end sensorsUids.forEach
+    }); // end W1Temp.getSensorsUids
+  }); // end PIN.forEach
+});
+async function doIt() {
+  pinBus = await calculatePinBus();
+  console.log('pinBus 2: ', pinBus);
+};
+doIt();
+*/
