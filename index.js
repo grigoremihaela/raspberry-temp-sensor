@@ -16,7 +16,7 @@ console.log('pinBus 2: ', pinBus);
 //W1Temp.setGpioData(27)
 
 /*
-// v3 not working?
+// v3 working slowly?
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, {'pin': 17, 'busMaster': 'w1_bus_master8'}, {'pin': 22, 'busMaster': 'w1_bus_master11'}];
 pinBus.forEach(function(obj, index) {
   var pin = obj.pin;
