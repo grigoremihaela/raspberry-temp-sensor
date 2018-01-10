@@ -1,11 +1,11 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp=require('./src/api/temp');
-
+/*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
-//console.log('pinBus: ', pinBus);  // []
-
+console.log('pinBus: ', pinBus);  // []
+*/
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(13);
 // set gpio pin 6 to use as W1 data channel
