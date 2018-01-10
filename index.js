@@ -33,15 +33,15 @@ const calculatePinBus = new Promise((res, reject) => {
             i++;
           };
           res(pinBus);
-          console.log('pinBus 1: ', pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
+          //console.log('pinBus 1: ', pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
         }); // end W1Temp.getSensor
       }); // end sensorsUids.forEach
     }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
 });
 async function doIt() {
-  pinBus = await calculatePinBus()
-  console.log('pinBus: ', pinBus)
+  pinBus = await calculatePinBus();
+  console.log('pinBus: ', pinBus);
 };
 doIt();
 /*
