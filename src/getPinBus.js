@@ -8,7 +8,8 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
 var pinBus = [];
 var i = 0; 
 
-module.exports.GetPinBus  = function () { 
+async function x() {
+var calculatePinBus = await new Promise((resolve, reject) => {
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
@@ -22,10 +23,21 @@ PIN.forEach(function(pin, bus) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           i++;
         };
-        console.log('pinBus 1: ', pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
+        resolve(pinBus);
+        //console.log('pinBus 1: ', pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
       }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-return pinBus;
+});
+  return calculatePinBus;
 }
+
+module.exports.GetPinBus  = function () { 
+  pinBus = x();
+  return pinBus;
+}
+
+
+
+
