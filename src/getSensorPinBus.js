@@ -1,8 +1,8 @@
 var request=require('request');
 var W1Temp = require('w1temp');
-var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
-var Sensor = require('w1temp/src/lib/Sensor';
-const { SENSOR_UID_REGEXP } = require('w1temp/src/lib/constants';
+import fileExistsWait from './node_modules/w1temp/src/lib/fileExistsWait';
+import Sensor from './node_modules/w1temp/src/lib/Sensor';
+import { SENSOR_UID_REGEXP } from './node_modules/w1temp/src/lib/constants';
 
 module.exports.GetSensorPinBus  = function (sensorUid) { 
   return new Promise((resolve, reject) => {
