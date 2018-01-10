@@ -33,7 +33,7 @@ new Promise(function(resolve, reject) {
             i++;
           };
           resolve(pinBus);
-          //console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
+          console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
         }); // end W1Temp.getSensor
       }); // end sensorsUids.forEach
     }); // end W1Temp.getSensorsUids
@@ -42,7 +42,6 @@ new Promise(function(resolve, reject) {
 .then(function(pinBus) {
   console.log('pinBus 1: ', pinBus);
 });
-/*
 const calculatePinBus = new Promise((res, reject) => {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
@@ -69,7 +68,6 @@ async function doIt() {
   console.log('pinBus 2: ', pinBus);
 };
 doIt();
-*/
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
@@ -82,7 +80,6 @@ console.log('pinBus: ', pinBus);  // []
 // if is not set by instructions above (required root permissions)
 //W1Temp.setGpioData(6)
 
-/*
 // v3  too slowly?
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 17, 'busMaster': 'w1_bus_master8'}, 
@@ -97,7 +94,7 @@ pinBus.forEach(function(pinBusMaster) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-*/
+
 /*
 //v1
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
