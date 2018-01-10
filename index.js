@@ -3,7 +3,7 @@ var W1Temp = require('w1temp');
 var temp=require('./src/api/temp');
 var getPinBus=require('./src/getPinBus');
 
-getPinBus.GetPinBus(pinBus);
+getPinBus.GetPinBus();
 
 /*
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22]
