@@ -9,7 +9,7 @@ var pinBus = [];
 var i = 0; 
 
 module.exports.GetPinBus  = function () { 
-return new Promise((resolve, reject) => {
+new Promise(function(resolve, reject) {
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
@@ -29,6 +29,9 @@ PIN.forEach(function(pin, bus) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-console.log('pinBus: ', pinBus); 
+})
+.then(function(result) {
+  console.log(result);
+  return result;
 });
 }
