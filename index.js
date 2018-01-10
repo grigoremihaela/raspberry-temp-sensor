@@ -18,6 +18,7 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
                      'w1_bus_master21', 'w1_bus_master22', 'w1_bus_master23', 'w1_bus_master24', 'w1_bus_master25', 
                      'w1_bus_master26'];
 */
+/*
 new Promise(function(res, reject) {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
@@ -42,7 +43,8 @@ new Promise(function(res, reject) {
 .then(function(pinBus) {
   console.log('pinBus 1: ', pinBus);
 });
-/*
+*/
+
 const calculatePinBus = new Promise((res, reject) => {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
@@ -69,7 +71,7 @@ async function doIt() {
   console.log('pinBus 2: ', pinBus);
 };
 doIt();
-*/
+
 
 /*
 var getPinBus=require('./src/getPinBus');
