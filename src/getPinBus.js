@@ -22,11 +22,11 @@ PIN.forEach(function(pin, bus) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           i++;
         };
-        console.log('pinBus: ', pinBus);           //var  pinBus working good this
+        console.log('pinBus 1: ', pinBus);           //var  pinBus working good this
       }); // end W1Temp.getSensor
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-
+console.log('pinBus 2: ', pinBus);
 return pinBus;
 }
