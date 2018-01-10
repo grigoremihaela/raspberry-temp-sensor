@@ -1,19 +1,16 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp=require('./src/api/temp');
+
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
-console.log('pinBus 2: ', pinBus);
+console.log('pinBus: ', pinBus);  // []
+
 // turn on gpio pin 13 as W1 power if you want to
-//W1Temp.setGpioPower(4);
+//W1Temp.setGpioPower(13);
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
-//W1Temp.setGpioData(4)
-// turn on gpio pin 13 as W1 power if you want to
-//W1Temp.setGpioPower(27);
-// set gpio pin 6 to use as W1 data channel
-// if is not set by instructions above (required root permissions)
-//W1Temp.setGpioData(27)
+//W1Temp.setGpioData(6)
 
 /*
 // v3 working slowly?
@@ -30,7 +27,7 @@ pinBus.forEach(function(obj, index) {
 */
 
 /* 
-//v2
+//v2 slow
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
