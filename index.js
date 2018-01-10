@@ -3,8 +3,8 @@ var W1Temp = require('w1temp');
 var temp=require('./src/api/temp');
 
 var getPinBus=require('./src/getPinBus');
-var pinBus = getPinBus.GetPinBus();
-console.log('pinBus: ', pinBus);  // []
+getPinBus.GetPinBus();
+//console.log('pinBus: ', pinBus);  // []
 
 // turn on gpio pin 13 as W1 power if you want to
 //W1Temp.setGpioPower(13);
