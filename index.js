@@ -40,7 +40,6 @@ PIN.forEach(function(pin, bus) {
 }
 delay1();
 
-console.log('sensorsUidsArray: ', sensorsUidsArray);
 /*
 function getSensorsUidsArray() {
 return new Promise(function(resolve,reject) {
