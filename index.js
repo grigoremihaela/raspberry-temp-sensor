@@ -49,19 +49,17 @@ async function asyncGetPinBusArray() {
   var result = await getPinBusArray();
   // expected output: "resolved"
 }
-
 asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
 
 async function asyncCall1() {
-  var sensorsUidsTest = await W1Temp.getSensorsUids('w1_bus_master1');
+  var result = await W1Temp.getSensorsUids('w1_bus_master1');
   // expected output: "resolved"
+  console.log(result);
 }
-
-var sensorsUidsTest = asyncCall1();
-
-console.log('sensorsUidsTest: ', sensorsUidsTest);
+asyncCall1();
+console.log('sensorsUidsTest: ', sensorsUids);
 /*
 function delay() {
 return new Promise(function(res,reject) {
