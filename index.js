@@ -27,7 +27,7 @@ var sensorsUidsArray = [];
 var pinBus = [];
 var i = 0; 
 
-W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (result) {
+W1Temp.getSensorsUids('w1_bus_master1').then(function (result) {
 })
 .then(function(result) {
     console.log(result); // "normalReturn"
