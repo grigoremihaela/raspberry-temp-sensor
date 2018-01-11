@@ -38,8 +38,6 @@ PIN.forEach(function(pin, bus) {
     asyncCall();
     console.log('sensorsUids: ', sensorsUids);
  }); // end PIN.forEach
-}); // end Promise
-}
 
 
 function getPinBusArray() {
