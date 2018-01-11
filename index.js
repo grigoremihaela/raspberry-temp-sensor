@@ -48,7 +48,7 @@ console.log('sensorsUidsArray: ', sensorsUidsArray);
 */
 
 
-function delay() {
+function getPinBusArray() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
     //console.log(sensorsUids1[bus], sensorsUids1[bus].length);
@@ -66,12 +66,12 @@ function delay() {
   }); // end PIN.forEach
   }); // end Promise
 }
-async function asyncCall() {
-  var result = await delay();
+async function asyncGetPinBusArray() {
+  var result = await getPinBusArray();
   // expected output: "resolved"
 }
 
-asyncCall();
+asyncgetPinBusArray();
 console.log('pinBus: ', pinBus);
 
 
