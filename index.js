@@ -24,7 +24,8 @@ function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
-    sensorsUids.forEach(function(value, index) {
+      console.log(sensorsUids);
+    if(sensorsUids) {
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
@@ -34,7 +35,7 @@ function delay() {
             i++;
           };
           resolve(pinBus);
-      }); // end sensorsUids.forEach
+      };
       }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
   });
