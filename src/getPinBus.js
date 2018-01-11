@@ -36,7 +36,7 @@ module.exports.GetPinBus  = function () {
     console.log('pinBus 2: ', pinBus);
     return pinBus;
   };
-  doIt();
+  return doIt();
 }
 
 /*
