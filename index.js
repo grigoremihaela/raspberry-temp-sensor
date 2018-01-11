@@ -43,11 +43,8 @@ function delay() {
   }); // end PIN.forEach
   });
 }
-async function asyncCall() {
-  var result = await delay();
-  // expected output: "resolved"
-}
-pinBus = asyncCall();
+
+pinBus = delay();
 
 console.log('pinBus: ', pinBus);  
 
