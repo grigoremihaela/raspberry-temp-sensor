@@ -59,8 +59,8 @@ async function asyncCall1() {
   console.log('result: ', result);
   return result;
 }
-var list = asyncCall1();
-console.log('sensorsUidsTest: ', list);
+
+console.log('sensorsUidsTest: ', asyncCall1());
 /*
 function delay() {
 return new Promise(function(res,reject) {
