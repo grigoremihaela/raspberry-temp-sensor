@@ -22,11 +22,13 @@ var pinBus = [];
 var i = 0; 
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
-      if (sensorsUids != []) {
+      if (sensorsUids.length > 0 ) {
       console.log('sensorsUids ', bus, ' ', sensorsUids);
       };
     }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
+
+/*
 function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
@@ -53,6 +55,8 @@ async function asyncCall() {
 
 asyncCall();
 console.log('pinBus: ', pinBus); 
+*/
+
 /*
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
 var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
