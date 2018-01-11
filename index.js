@@ -29,13 +29,10 @@ var i = 0;
 var sensorsUids = [];
 
 PIN.forEach(function(pin, bus) {
-    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
-     async function asyncCall() {
-      var result = await W1Temp.getSensorsUids();
+    async function asyncCall() {
+      var result = await W1Temp.getSensorsUids(w1BusMaster[bus]);
       // expected output: "resolved"
-     }     
-    }); // end W1Temp.getSensorsUids
-
+    }
     asyncCall();
     console.log('sensorsUids: ', sensorsUids);
  }); // end PIN.forEach
