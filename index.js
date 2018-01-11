@@ -71,7 +71,7 @@ async function asyncGetPinBusArray() {
   // expected output: "resolved"
 }
 
-asyncgetPinBusArray();
+asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
 
