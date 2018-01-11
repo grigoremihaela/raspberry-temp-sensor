@@ -38,7 +38,7 @@ PIN.forEach(function(pin, bus) {
 }); // end Promise
 }
 async function asyncSensorsUidsArray() {
-  var result = await delay();
+  var result = await getSensorsUidsArray();
   // expected output: "resolved"
 }
 asyncSensorsUidsArray();
