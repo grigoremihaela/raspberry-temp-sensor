@@ -58,9 +58,9 @@ async function asyncCall1() {
   // expected output: "resolved"
   console.log('sensorsUidsTest1: ', sensorsUids);
 }
-//var sensorsUids = 
 asyncCall1();
-//console.log('sensorsUidsTest: ', sensorsUids);
+var sensorsUidsTest = asyncCall1();
+console.log('sensorsUidsTest: ', sensorsUidsTest);
 /*
 function delay() {
 return new Promise(function(res,reject) {
