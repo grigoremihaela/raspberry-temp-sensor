@@ -21,7 +21,7 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
 var pinBus = [];
 var i = 0; 
 function delay() {
-  return new Promise(function(resolve,reject) {
+  return new Promise(function(res,reject) {
 
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
@@ -36,7 +36,7 @@ function delay() {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
           };
-          resolve(pinBus);
+          res(pinBus);
       
       };
     }); // end W1Temp.getSensorsUids
