@@ -54,8 +54,9 @@ console.log('pinBus: ', pinBus);
 
 
 
+
 async function test() {
-    var result =  await  W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) { 
+    var result =  await  W1Temp.getSensorsUids('w1_bus_master2').then(function (sensorsUids) { 
         return sensorsUids;
     }); // end W1Temp.getSensorsUids
     console.log('test1: ', result);
