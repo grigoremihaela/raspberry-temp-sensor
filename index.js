@@ -17,6 +17,41 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
+var sensorsUids = [4, 0, 7, 9, 0, 13, 0, 0, 19, 0, 22];
+var pinBus = [];
+var i = 0; 
+
+function delay() {
+  return new Promise(function(resolve,reject) {
+  PIN.forEach(function(pin, bus) {
+    sensorsUids.forEach(function(value, index) {
+      if(value === pin){
+          if (i==0) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          if (i>0 && pinBus[i-1].pin!=pin) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          resolve(pinBus);
+      };
+      }); // end sensorsUids.forEach
+  }); // end PIN.forEach
+  });
+}
+async function asyncCall() {
+  var result = await delay();
+  // expected output: "resolved"
+}
+
+asyncCall();
+/*
+var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
+var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
+                   'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
+                   'w1_bus_master11'
+                   ];
 var pinBus = [];
 var i = 0; 
 
@@ -50,6 +85,8 @@ async function asyncCall() {
   console.log('pinBus: ', pinBus);  
 }
 asyncCall(); 
+*/
+
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
