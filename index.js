@@ -42,7 +42,7 @@ const calculatePinBus = new Promise((res, reject) => {
   }); // end PIN.forEach
 });
 
-  pinBus = await calculatePinBus();
+  pinBus = await calculatePinBus;
   console.log('pinBus 2: ', pinBus);
 };
 doIt();
