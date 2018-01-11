@@ -13,7 +13,7 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
                      'w1_bus_master26'];
 */
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
-var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
+var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
@@ -33,11 +33,11 @@ function getPinBusArray() {
     //console.log(sensorsUids1[bus], sensorsUids1[bus].length);
       if(sensorsUids1[bus].length > 0){
           if (i==0) {
-            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMasters[bus] };
             i++;
           };
           if (i>0 && pinBus[i-1].pin!=pin) {
-            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMasters[bus] };
             i++;
           };
           resolve(pinBus);
@@ -53,10 +53,13 @@ async function asyncGetPinBusArray() {
 asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
+var sensorsUidsTest = W1Temp.getSensorsUids('w1_bus_master1');
+onsole.log('sensorsUidsTest: ', sensorsUidsTest);
+/*
 function delay() {
 return new Promise(function(res,reject) {
-PIN.forEach(function(pin, bus) {
-    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+w1BusMasters.forEach(function(w1BusMaster) {
+    W1Temp.getSensorsUids(w1BusMaster).then(function (sensorsUids) {
       sensorsUidsArray.push(sensorsUids);
       console.log('sensorsUidsArray1: ', sensorsUidsArray);
       res(sensorsUidsArray);
@@ -71,6 +74,8 @@ async function asyncCall() {
 
 asyncCall();
 console.log('sensorsUidsArray: ', sensorsUidsArray);
+*/
+
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
