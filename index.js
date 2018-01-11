@@ -1,8 +1,7 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp=require('./src/api/temp');
-var pin = 4;
-var bus = 'w1_bus_master1';
+
 /*
 var PIN = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
 
@@ -26,11 +25,11 @@ var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'},
               {'pin': 22, 'busMaster': 'w1_bus_master11'}
               ];
 pinBus.forEach(function(pinBusMaster) {
-  pin = pinBusMaster.pin;
-  bus = pinBusMaster.busMaster;
-  W1Temp.getSensorsUids(bus).then(function (sensorsUids) {
+  //var pin = pinBusMaster.pin;
+  //var bus = pinBusMaster.busMaster;
+  W1Temp.getSensorsUids(pinBusMaster.busMaster).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
-      temp.SendTempApi(value, index, pin);
+      temp.SendTempApi(value, index, pinBusMaster.pin);
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
