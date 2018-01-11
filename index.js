@@ -1,7 +1,6 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp=require('./src/api/temp');
-var sensorsUids;
 
 /*
 var PIN = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
@@ -54,13 +53,28 @@ async function asyncGetPinBusArray() {
 asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
-async function testuids() {
-  var sensorsUids = await W1Temp.getSensorsUids('w1_bus_master1');
-  console.log('sensorsUids ', sensorsUids);
-  return sensorsUids;
+function delay() {
+return new Promise(function(res,reject) {
+PIN.forEach(function(pin, bus) {
+  async function asynctest() {
+    var result = await await W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+      sensorsUidsArray.push(sensorsUids);
+      console.log('sensorsUidsArray1: ', sensorsUidsArray);
+    }); // end W1Temp.getSensorsUids
+  }
+  asynctest()
+  console.log('sensorsUidsArray: ', sensorsUidsArray);
+  res(sensorsUidsArray);
+ }); // end PIN.forEach
+}); // end Promise
 }
-var sensorsUids = testuids();
-console.log('sensorsUidsTest ', sensorsUids);
+async function asyncCall() {
+  var result = await delay();
+  // expected output: "resolved"
+}
+
+asyncCall();
+console.log('sensorsUidsArray: ', sensorsUidsArray);
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
