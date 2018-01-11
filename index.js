@@ -26,14 +26,11 @@ var sensorsUids1 = [[ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '
 var sensorsUidsArray = [];
 var pinBus = [];
 var i = 0; 
-var sensorsUids = [];
 
-    async function asyncCall(bus) {
-      sensorsUids = await W1Temp.getSensorsUids(bus);
-      console.log('result: ', sensorsUids);
-    }
-    asyncCall('w1_bus_master1');
-    console.log('sensorsUids: ', sensorsUids);
+const sensorsUids = async function test() {
+  var result = await W1Temp.getSensorsUids('w1_bus_master1');
+}
+console.log('sensorsUids: ', sensorsUids);
 
 function getPinBusArray() {
   return new Promise(function(resolve,reject) {
