@@ -53,15 +53,9 @@ new Promise(function(resolve,reject) {
           };
           resolve(pinBus);
           console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
-        })
-        .then(function(sensor) {
-    console.log('sensor', sensor); // "normalReturn"
-});
+        });
       }); // end sensorsUids.forEach
-    })
-    .then(function(sensorsUids) {
-    console.log('sensorsUids', sensorsUids); // "normalReturn"
-});
+    });
   }); // end PIN.forEach
   })
 .then(function(pinBus) {
