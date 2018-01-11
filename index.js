@@ -1,6 +1,7 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp=require('./src/api/temp');
+var sensorsUids;
 
 /*
 var PIN = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
@@ -54,14 +55,11 @@ asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
 async function test() {
-const sensorsUidsTest = await W1Temp.getSensorsUids('w1_bus_master1')
-                        .then(function (sensorsUids) {
-                          console.log('sensorsUids ', sensorsUids);
-                          return sensorsUids;
-                        });
+  var sensorsUids = await W1Temp.getSensorsUids('w1_bus_master1');
+  console.log('sensorsUids ', sensorsUids);
 }
-const sensorsUidsTest = test();
-console.log('sensorsUidsTest ', sensorsUidsTest);
+test();
+console.log('sensorsUidsTest ', sensorsUids);
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
