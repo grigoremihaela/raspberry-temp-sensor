@@ -25,7 +25,7 @@ PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
       W1Temp.getSensor(value).then(function (sensor) {
-        console.log(pin, '   ', w1BusMaster[bus]);
+        //console.log(pin, '   ', w1BusMaster[bus]);
         if (i==0) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           i++;
@@ -34,7 +34,7 @@ PIN.forEach(function(pin, bus) {
           pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
           i++;
         };
-        console.log('sensor: ', sensor);
+        //console.log('sensor: ', sensor);
         resolve(pinBus);
         //console.log('pinBus: ', pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
       }); // end W1Temp.getSensor
