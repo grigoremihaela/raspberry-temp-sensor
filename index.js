@@ -52,6 +52,25 @@ async function asyncGetPinBusArray() {
 
 asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
+
+function delay() {
+return new Promise(function(res,reject) {
+PIN.forEach(function(pin, bus) {
+    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+      sensorsUidsArray.push(sensorsUids);
+      console.log('sensorsUidsArray1: ', sensorsUidsArray);
+      res(sensorsUidsArray);
+    }); // end W1Temp.getSensorsUids
+ }); // end PIN.forEach
+}); // end Promise
+}
+async function asyncCall() {
+  var result = await delay();
+  // expected output: "resolved"
+}
+
+asyncCall();
+console.log('sensorsUidsArray: ', sensorsUidsArray);
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
