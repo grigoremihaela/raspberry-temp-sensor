@@ -27,17 +27,10 @@ var sensorsUidsArray = [];
 var pinBus = [];
 var i = 0; 
 
-W1Temp.getSensorsUids('w1_bus_master1').then(function (result) {
-})
-.then(function(result) {
+W1Temp.getSensorsUids('w1_bus_master8').then(function(result) {
     console.log(result); // "normalReturn"
 });
-        W1Temp.getSensor('28-0516a1dd9cff').then(function (pinBus) {
-          pinBus = [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
-        })
-        .then(function(pinBus) {
-          console.log(pinBus); 
-        });
+
 function getPinBusArray() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
