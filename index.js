@@ -59,7 +59,7 @@ const sensorsUidsTest = await W1Temp.getSensorsUids('w1_bus_master1').then(funct
 });
 return sensorsUidsTest;
 }
-test();
+const sensorsUidsTest = test();
 console.log('sensorsUidsTest ', sensorsUidsTest);
 /*
 var getPinBus=require('./src/getPinBus');
