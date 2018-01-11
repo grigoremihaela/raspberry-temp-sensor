@@ -28,15 +28,12 @@ var pinBus = [];
 var i = 0; 
 var sensorsUids = [];
 
-PIN.forEach(function(pin, bus) {
-    async function asyncCall() {
-      var result = await W1Temp.getSensorsUids(w1BusMaster[bus]);
-      // expected output: "resolved"
+    async function asyncCall('w1_bus_master1') {
+      sensorsUids = await W1Temp.getSensorsUids('w1_bus_master1');
+      console.log('result: ', sensorsUids);
     }
-    asyncCall();
+    asyncCall('w1_bus_master1');
     console.log('sensorsUids: ', sensorsUids);
- }); // end PIN.forEach
-
 
 function getPinBusArray() {
   return new Promise(function(resolve,reject) {
