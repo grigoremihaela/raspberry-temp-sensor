@@ -28,8 +28,8 @@ var pinBus = [];
 var i = 0; 
 var sensorsUids = [];
 
-    async function asyncCall('w1_bus_master1') {
-      sensorsUids = await W1Temp.getSensorsUids('w1_bus_master1');
+    async function asyncCall(bus) {
+      sensorsUids = await W1Temp.getSensorsUids(bus);
       console.log('result: ', sensorsUids);
     }
     asyncCall('w1_bus_master1');
