@@ -36,10 +36,11 @@ PIN.forEach(function(pin, bus) {
  }); // end PIN.forEach
 */
 function delay() {
- return new Promise(function(resolve,reject) {
+  return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
     console.log(sensorsUids[bus], sensorsUids[bus].length);
-    //if(sensorsUids[bus] && sensorsUids[bus].length > 0){
+    sensorsUids.forEach(function(value, index) {
+      if(value.length > 0){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
@@ -49,9 +50,10 @@ function delay() {
             i++;
           };
           resolve(pinBus);
-    //};
+      };
+      }); // end sensorsUids.forEach
   }); // end PIN.forEach
- });
+  });
 }
 async function asyncCall() {
   var result = await delay();
@@ -59,7 +61,9 @@ async function asyncCall() {
 }
 
 asyncCall();
-console.log('pinBus: ', pinBus); 
+console.log('pinBus: ', pinBus);
+
+
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
