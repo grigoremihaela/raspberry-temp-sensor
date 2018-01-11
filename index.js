@@ -25,7 +25,7 @@ var sensorsUids = [[ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '2
 
 var pinBus = [];
 var i = 0; 
-
+/*
 PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       console.log(sensorsUids);
@@ -34,14 +34,15 @@ PIN.forEach(function(pin, bus) {
       };
     }); // end W1Temp.getSensorsUids
  }); // end PIN.forEach
-
+*/
 function delay() {
   return new Promise(function(resolve,reject) {
     //console.log(sensorsUids);
   PIN.forEach(function(pin, bus) {
+    if(sensorsUids && sensorsUids.length > 0){
     sensorsUids.forEach(function(sensorsUid, index) {
       //console.log(index, sensorsUid);
-      if(sensorsUid && sensorsUid.length > 0){
+      
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
@@ -51,8 +52,9 @@ function delay() {
             i++;
           };
           resolve(pinBus);
-      };
+     
       }); // end sensorsUids.forEach
+     };
   }); // end PIN.forEach
   });
 }
