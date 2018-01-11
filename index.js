@@ -57,12 +57,16 @@ PIN.forEach(function(pin, bus) {
  }); // end PIN.forEach
 }); // end Promise
 }
-async function asyncSensorsUidsArray() {
+async function asyncCall1() {
   var result1 = await getSensorsUidsArray();
   // expected output: "resolved"
+  console.log('result1: ', sensorsUidsArray);
 }
-asyncSensorsUidsArray();
+
+asyncCall1();
 console.log('sensorsUidsArray: ', sensorsUidsArray);
+
+
 
 function delay() {
   return new Promise(function(resolve,reject) {
