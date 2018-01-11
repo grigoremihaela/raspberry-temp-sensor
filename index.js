@@ -17,13 +17,15 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
+var sensorsUids = [4, 0, 7, 9, 0, 13, 0, 0, 19, 0, 22];
 var pinBus = [];
 var i = 0; 
 
 function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
-    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+    sensorsUids.forEach(function(value, index) {
+      if(value === pin){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
@@ -33,7 +35,8 @@ function delay() {
             i++;
           };
           resolve(pinBus);
-      }); // end W1Temp.getSensorsUids
+      };
+      }); // end sensorsUids.forEach
   }); // end PIN.forEach
   });
 }
