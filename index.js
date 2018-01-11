@@ -29,8 +29,10 @@ var i = 0;
 
 function delay() {
   return new Promise(function(resolve,reject) {
+    console.log(sensorsUids);
   PIN.forEach(function(pin, bus) {
     sensorsUids.forEach(function(sensorsUid, index) {
+      console.log(index, sensorsUid);
       if(sensorsUid.length > 0){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
