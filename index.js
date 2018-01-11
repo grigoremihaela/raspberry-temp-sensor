@@ -53,22 +53,17 @@ asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
 
-async function asyncCall1() {
-  var result = await W1Temp.getSensorsUids('w1_bus_master1');
-  // expected output: "resolved"
-  console.log('result: ', result);
-}
-
-console.log('sensorsUidsTest: ', asyncCall1());
-/*
 function delay() {
 return new Promise(function(res,reject) {
 w1BusMasters.forEach(function(w1BusMaster) {
-    W1Temp.getSensorsUids(w1BusMaster).then(function (sensorsUids) {
+    async function asyncCall1() {
+      var sensorsUids = await W1Temp.getSensorsUids(w1BusMaster);
+      // expected output: "resolved"
+      console.log('result: ', sensorsUids);
       sensorsUidsArray.push(sensorsUids);
       console.log('sensorsUidsArray1: ', sensorsUidsArray);
       res(sensorsUidsArray);
-    }); // end W1Temp.getSensorsUids
+    }
  }); // end PIN.forEach
 }); // end Promise
 }
@@ -79,7 +74,7 @@ async function asyncCall() {
 
 asyncCall();
 console.log('sensorsUidsArray: ', sensorsUidsArray);
-*/
+
 
 /*
 var getPinBus=require('./src/getPinBus');
