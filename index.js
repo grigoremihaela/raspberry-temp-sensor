@@ -27,6 +27,25 @@ var SensorsUidsArray = [];
 var pinBus = [];
 var i = 0; 
 
+function delay1() {
+  return new Promise(function(resolve,reject) {
+PIN.forEach(function(pin, bus) {
+    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+      sensorsUidsArray.push(sensorsUids);
+      resolve(sensorsUidsArray);
+      console.log('sensorsUidsArray: ', sensorsUidsArray);
+    }); // end W1Temp.getSensorsUids
+ }); // end PIN.forEach
+  }); // end Promise
+}
+async function asyncCall1() {
+  var result = await delay1();
+  // expected output: "resolved"
+}
+
+asyncCall1();
+console.log('pinBus: ', pinBus);
+/*
 function getSensorsUidsArray() {
 return new Promise(function(resolve,reject) {
 PIN.forEach(function(pin, bus) {
@@ -45,7 +64,7 @@ async function asyncSensorsUidsArray() {
 };
 asyncSensorsUidsArray();
 //console.log('sensorsUidsArray: ', sensorsUidsArray);
-
+*/
 function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
