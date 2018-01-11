@@ -36,18 +36,18 @@ PIN.forEach(function(pin, bus) {
     }); // end W1Temp.getSensorsUids
  }); // end PIN.forEach
 }); // end Promise
-}
+};
 async function asyncSensorsUidsArray() {
   var result = await getSensorsUidsArray();
   // expected output: "resolved"
-}
+};
 asyncSensorsUidsArray();
 console.log('sensorsUidsArray: ', sensorsUidsArray);
 
 function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
-    console.log(sensorsUids1[bus], sensorsUids1[bus].length);
+    //console.log(sensorsUids1[bus], sensorsUids1[bus].length);
       if(sensorsUids1[bus].length > 0){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
