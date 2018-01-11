@@ -27,9 +27,10 @@ var sensorsUidsArray = [];
 var pinBus = [];
 var i = 0; 
 
-const sensorsUids = async function test() {
+async function test() {
   var result = await W1Temp.getSensorsUids('w1_bus_master1');
 }
+const sensorsUids = test();
 console.log('sensorsUids: ', sensorsUids);
 
 function getPinBusArray() {
