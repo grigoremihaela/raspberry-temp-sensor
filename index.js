@@ -53,8 +53,9 @@ async function asyncGetPinBusArray() {
 asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
-    var result =  W1Temp.getSensorsUids('w1_bus_master8');
-    console.log('test1: ', result);
+W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
+  console.log(sensorsUids);
+});
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
