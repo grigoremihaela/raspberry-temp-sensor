@@ -39,10 +39,10 @@ function delay() {
   return new Promise(function(resolve,reject) {
     //console.log(sensorsUids);
   PIN.forEach(function(pin, bus) {
-    if(sensorsUids[bus] && sensorsUids[bus].length > 0){
+    
     sensorsUids.forEach(function(sensorsUid, index) {
       //console.log(index, sensorsUid);
-      
+      if(sensorsUids[index] && sensorsUids[index].length > 0){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
@@ -52,9 +52,9 @@ function delay() {
             i++;
           };
           resolve(pinBus);
-     
+        };
       }); // end sensorsUids.forEach
-     };
+    
   }); // end PIN.forEach
   });
 }
