@@ -59,7 +59,7 @@ async function asyncCall1() {
   // expected output: "resolved"
 }
 
-asyncCall1();
+var sensorsUidsTest = asyncCall1();
 
 console.log('sensorsUidsTest: ', sensorsUidsTest);
 /*
