@@ -54,7 +54,7 @@ asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
 var sensorsUidsTest = W1Temp.getSensorsUids('w1_bus_master1');
-onsole.log('sensorsUidsTest: ', sensorsUidsTest);
+console.log('sensorsUidsTest: ', sensorsUidsTest);
 /*
 function delay() {
 return new Promise(function(res,reject) {
