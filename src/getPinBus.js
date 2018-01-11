@@ -1,3 +1,4 @@
+// unfinished
 var request=require('request');
 var W1Temp = require('w1temp');
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
