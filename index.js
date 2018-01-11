@@ -32,7 +32,7 @@ PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
     }); // end W1Temp.getSensorsUids
     async function asyncCall() {
-      var result = await getSensorsUids();
+      var result = await W1Temp.getSensorsUids();
       // expected output: "resolved"
     }
     asyncCall();
