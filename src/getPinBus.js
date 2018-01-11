@@ -30,13 +30,10 @@ const calculatePinBus = new Promise((res, reject) => {
   }); // end PIN.forEach
 });
 
-module.exports.GetPinBus  = function () { 
-  async function doIt() {
+module.exports.GetPinBus  = async function () { 
     pinBus = await calculatePinBus;
     console.log('pinBus 2: ', pinBus);
     return pinBus;
-  };
-  return doIt();
 }
 
 /*
