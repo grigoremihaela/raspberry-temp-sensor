@@ -26,7 +26,7 @@ var sensorsUids1 = [[ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '
 var sensorsUidsArray = [];
 var pinBus = [];
 var i = 0; 
-
+var list;
 
 PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
@@ -36,7 +36,7 @@ PIN.forEach(function(pin, bus) {
       // expected output: "resolved"
     }
     asyncCall();
-    console.log('sensorsUids: ', sensorsUids);
+    console.log('sensorsUids: ', list);
  }); // end PIN.forEach
 
 
