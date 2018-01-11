@@ -54,10 +54,11 @@ asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
 async function test() {
-const sensorsUidsTest = await W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-  console.log('sensorsUids ', sensorsUids);
-});
-return sensorsUidsTest;
+const sensorsUidsTest = await W1Temp.getSensorsUids('w1_bus_master1')
+                        .then(function (sensorsUids) {
+                          console.log('sensorsUids ', sensorsUids);
+                          return sensorsUids;
+                        });
 }
 const sensorsUidsTest = test();
 console.log('sensorsUidsTest ', sensorsUidsTest);
