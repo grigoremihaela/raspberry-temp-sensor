@@ -27,7 +27,16 @@ var sensorsUidsArray = [];
 var pinBus = [];
 var i = 0; 
 
-W1Temp.getSensorsUids('w1_bus_master8').then(function(result) {
+W1Temp.getSensorsUids('w1_bus_master8')
+.then(function(result) {
+    console.log(result); // "normalReturn"
+    return new Promise(function(resolve, reject) {
+      sensorsUidsArray.push(result);
+      sensorsUidsArray.push(PIN);
+      resolve(sensorsUidsArray)
+   })
+})
+.then(function(result) {
     console.log(result); // "normalReturn"
 });
 
