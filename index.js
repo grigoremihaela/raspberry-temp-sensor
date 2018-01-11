@@ -23,7 +23,10 @@ var i = 0;
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       if (sensorsUids.length > 0 ) {
-      console.log('sensorsUids ', bus, ' ', sensorsUids);
+      //console.log('sensorsUids ', bus, ' ', sensorsUids);
+      W1Temp.getSensor(value).then(function (sensor) {
+        console.log('sensor ', w1BusMaster[bus], ' ', sensor);
+      }); // end W1Temp.getSensor
       };
     }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
