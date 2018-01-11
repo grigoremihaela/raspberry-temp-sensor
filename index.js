@@ -55,14 +55,11 @@ console.log('pinBus: ', pinBus);
 
 
 
-async function test() {
-    var result =  await  W1Temp.getSensorsUids('w1_bus_master2').then(function (sensorsUids) { 
-        return sensorsUids;
-    }); // end W1Temp.getSensorsUids
+async function testuids() {
+    var result =  await  W1Temp.getSensorsUids('w1_bus_master8');
     console.log('test1: ', result);
 }
-test();
-console.log('test2: ', sensorsUidsArray);    
+console.log('test2: ', testuids() );    
  /*   
 function delay() {
 return new Promise(function(res,reject) {
