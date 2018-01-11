@@ -45,7 +45,7 @@ const calculatePinBus = new Promise((res, reject) => {
   pinBus = await calculatePinBus;
   console.log('pinBus 2: ', pinBus);
 };
-//doIt();
+doIt();
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
