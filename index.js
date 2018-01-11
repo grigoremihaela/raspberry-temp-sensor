@@ -38,7 +38,9 @@ PIN.forEach(function(pin, bus) {
  }); // end PIN.forEach
   }); // end Promise
 }
+delay1();
 
+console.log('sensorsUidsArray: ', sensorsUidsArray);
 /*
 function getSensorsUidsArray() {
 return new Promise(function(resolve,reject) {
