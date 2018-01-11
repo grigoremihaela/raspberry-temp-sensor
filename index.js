@@ -52,11 +52,16 @@ async function asyncGetPinBusArray() {
 asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
-   
-      var sensorsUids = await W1Temp.getSensorsUids(w1BusMaster[bus]);
-      // expected output: "resolved"
-      console.log('result: ', sensorsUids);
-    
+
+
+async function test() {
+    var result =  await  W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) { 
+        return sensorsUids;
+    }); // end W1Temp.getSensorsUids
+    console.log('test1: ', result);
+}
+var sensorsUids = test();
+console.log('test2: ', sensorsUids);    
  /*   
 function delay() {
 return new Promise(function(res,reject) {
