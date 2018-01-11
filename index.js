@@ -26,6 +26,7 @@ var sensorsUids1 = [[ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '
 var sensorsUidsArray = [];
 var pinBus = [];
 var i = 0; 
+var sensorsUids = [];
 
 function getPinBusArray() {
   return new Promise(function(resolve,reject) {
@@ -54,10 +55,9 @@ console.log('pinBus: ', pinBus);
 
 
 async function asyncCall1() {
-  var result = await W1Temp.getSensorsUids('w1_bus_master1');
+  var sensorsUids = await W1Temp.getSensorsUids('w1_bus_master1');
   // expected output: "resolved"
 }
-var sensorsUids;
 asyncCall1();
 console.log('sensorsUidsTest: ', sensorsUids);
 /*
