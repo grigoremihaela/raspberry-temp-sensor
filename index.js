@@ -19,7 +19,7 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    ];
 var pinBus = [];
 var i = 0; 
-async function doIt() {
+
 const calculatePinBus = new Promise((res, reject) => {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
@@ -44,8 +44,7 @@ const calculatePinBus = new Promise((res, reject) => {
 
   pinBus = await calculatePinBus;
   console.log('pinBus 2: ', pinBus);
-};
-doIt();
+
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
