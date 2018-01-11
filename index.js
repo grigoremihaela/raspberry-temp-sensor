@@ -57,7 +57,6 @@ async function asyncCall1() {
   var result = await W1Temp.getSensorsUids('w1_bus_master1');
   // expected output: "resolved"
   console.log('result: ', result);
-  return result;
 }
 
 console.log('sensorsUidsTest: ', asyncCall1());
