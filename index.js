@@ -26,12 +26,14 @@ var sensorsUids = [[ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '2
 var pinBus = [];
 var i = 0; 
 
+PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       console.log(sensorsUids);
       if (sensorsUids.length > 0 ) {
       console.log('sensorsUids ', w1BusMaster[bus], ' ', sensorsUids);
       };
     }); // end W1Temp.getSensorsUids
+ }); // end PIN.forEach
 
 function delay() {
   return new Promise(function(resolve,reject) {
