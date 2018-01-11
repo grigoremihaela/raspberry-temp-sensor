@@ -12,7 +12,47 @@ var w1_bus_master = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w
                      'w1_bus_master21', 'w1_bus_master22', 'w1_bus_master23', 'w1_bus_master24', 'w1_bus_master25', 
                      'w1_bus_master26'];
 */
+var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
+var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
+                   'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
+                   'w1_bus_master11'
+                   ];
+var sensorsUids = [ 
+                    [ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '28-0416a165a5ff' ], 
+                    [ '00-c1e000000000', '00-21e000000000', '00-a1e000000000' ],
+                    [], [], [], [], [],
+                    [ '28-0316a1a16fff' ], [], [], [ '28-03177067f9ff' ]
+                    ];
 
+var pinBus = [];
+var i = 0; 
+
+function delay() {
+  return new Promise(function(resolve,reject) {
+  PIN.forEach(function(pin, bus) {
+    sensorsUids.forEach(function(sensorsUid, index) {
+      if(sensorsUid.length > 0){
+          if (i==0) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          if (i>0 && pinBus[i-1].pin!=pin) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          resolve(pinBus);
+      };
+      }); // end sensorsUids.forEach
+  }); // end PIN.forEach
+  });
+}
+async function asyncCall() {
+  var result = await delay();
+  // expected output: "resolved"
+}
+
+asyncCall();
+console.log('pinBus: ', pinBus); 
 /*
 var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
@@ -25,6 +65,7 @@ console.log('pinBus: ', pinBus);  // []
 // if is not set by instructions above (required root permissions)
 //W1Temp.setGpioData(6)
 
+/*
 // v3  too slowly?
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 17, 'busMaster': 'w1_bus_master8'}, 
@@ -39,6 +80,7 @@ pinBus.forEach(function(pinBusMaster) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
+*/
 
 /*
 //v1
