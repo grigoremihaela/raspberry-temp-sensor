@@ -18,26 +18,27 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master11'
                    ];
 
-var sensorsUids = [[ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '28-0416a165a5ff' ], 
+var sensorsUids1 = [[ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '28-0416a165a5ff' ], 
                     [ '00-c1e000000000', '00-21e000000000', '00-a1e000000000' ],
                     [], [], [], [], [],
                     [ '28-0316a1a16fff' ], [], [], [ '28-03177067f9ff' ]
                   ];
-
+var sensorsUidsBus = [];
 var pinBus = [];
 var i = 0; 
 
 PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
-      console.log(sensorsUids);
+      sensorsUidsBus.push(sensorsUids);
+      console.log(sensorsUidsBus);
     }); // end W1Temp.getSensorsUids
  }); // end PIN.forEach
 
 function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
-    console.log(sensorsUids[bus], sensorsUids[bus].length);
-      if(sensorsUids[bus].length > 0){
+    console.log(sensorsUids1[bus], sensorsUids1[bus].length);
+      if(sensorsUids1[bus].length > 0){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
