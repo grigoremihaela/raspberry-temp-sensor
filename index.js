@@ -38,13 +38,7 @@ PIN.forEach(function(pin, bus) {
  }); // end PIN.forEach
   }); // end Promise
 }
-async function asyncCall1() {
-  var result = await delay1();
-  // expected output: "resolved"
-}
 
-sensorsUidsArray = asyncCall1();
-console.log('sensorsUidsArray: ', sensorsUidsArray);
 /*
 function getSensorsUidsArray() {
 return new Promise(function(resolve,reject) {
