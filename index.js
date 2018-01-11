@@ -53,10 +53,13 @@ async function asyncGetPinBusArray() {
 asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
-const sensorsUidsTest = W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
+async function test() {
+const sensorsUidsTest = await W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
   console.log('sensorsUids ', sensorsUids);
-  return sensorsUids;
 });
+return sensorsUidsTest;
+}
+test();
 console.log('sensorsUidsTest ', sensorsUidsTest);
 /*
 var getPinBus=require('./src/getPinBus');
