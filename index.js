@@ -57,8 +57,9 @@ console.log('pinBus: ', pinBus);
 async function testuids() {
   var sensorsUids = await W1Temp.getSensorsUids('w1_bus_master1');
   console.log('sensorsUids ', sensorsUids);
+  return sensorsUids;
 }
-testuids();
+var sensorsUids = testuids();
 console.log('sensorsUidsTest ', sensorsUids);
 /*
 var getPinBus=require('./src/getPinBus');
