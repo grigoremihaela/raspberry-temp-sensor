@@ -55,9 +55,9 @@ console.log('pinBus: ', pinBus);
 
 function delay() {
 return new Promise(function(res,reject) {
-w1BusMasters.forEach(function(w1BusMaster) {
+PIN.forEach(function(pin, bus) {
     async function asyncCall1() {
-      var sensorsUids = await W1Temp.getSensorsUids(w1BusMaster);
+      var sensorsUids = await W1Temp.getSensorsUids(w1BusMaster[bus]);
       // expected output: "resolved"
       console.log('result: ', sensorsUids);
       sensorsUidsArray.push(sensorsUids);
