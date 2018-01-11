@@ -61,7 +61,7 @@ async function test() {
     }); // end W1Temp.getSensorsUids
     console.log('test1: ', result);
 }
-var sensorsUids = test();
+test();
 console.log('test2: ', sensorsUids);    
  /*   
 function delay() {
