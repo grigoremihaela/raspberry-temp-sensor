@@ -21,9 +21,10 @@ var sensorsUids = [4, 0, 7, 9, 0, 13, 0, 0, 19, 0, 22];
 var pinBus = [];
 var i = 0; 
   PIN.forEach(function(pin, bus) {
-    console.log(bus);
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+      if (sensorsUids != []) {
       console.log('sensorsUids ', bus, ' ', sensorsUids);
+      };
     }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
 function delay() {
