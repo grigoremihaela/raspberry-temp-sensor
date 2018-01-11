@@ -39,7 +39,7 @@ function delay() {
   return new Promise(function(resolve,reject) {
     //console.log(sensorsUids);
   PIN.forEach(function(pin, bus) {
-    if(sensorsUids && sensorsUids.length > 0){
+    if(sensorsUids[bus] && sensorsUids[bus].length > 0){
     sensorsUids.forEach(function(sensorsUid, index) {
       //console.log(index, sensorsUid);
       
