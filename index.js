@@ -62,7 +62,7 @@ async function test() {
     console.log('test1: ', result);
 }
 test();
-console.log('test2: ', sensorsUids);    
+console.log('test2: ', sensorsUidsArray);    
  /*   
 function delay() {
 return new Promise(function(res,reject) {
