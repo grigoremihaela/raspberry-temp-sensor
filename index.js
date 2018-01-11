@@ -24,7 +24,7 @@ var i = 0;
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       if (sensorsUids.length > 0 ) {
       //console.log('sensorsUids ', bus, ' ', sensorsUids);
-      W1Temp.getSensor(value).then(function (sensor) {
+      W1Temp.getSensor(sensorsUids[0]).then(function (sensor) {
         console.log('sensor ', w1BusMaster[bus], ' ', sensor);
       }); // end W1Temp.getSensor
       };
