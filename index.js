@@ -22,10 +22,9 @@ var pinBus = [];
 var i = 0; 
 
 function delay() {
-  return new Promise(function(res,reject) {
-
+  return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
-        sensorsUids.forEach(function(value, index) {
+    sensorsUids.forEach(function(value, index) {
       if(value === pin){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
@@ -38,7 +37,18 @@ function delay() {
           resolve(pinBus);
       };
       }); // end sensorsUids.forEach
-        /*
+  }); // end PIN.forEach
+  });
+}
+async function asyncCall() {
+  var result = await delay();
+  // expected output: "resolved"
+}
+
+asyncCall();
+console.log('pinBus: ', pinBus); 
+
+/*
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       if (sensorsUids.length > 0 ) {
       console.log('sensorsUids ', w1BusMaster[bus], ' ', sensorsUids);
@@ -56,17 +66,6 @@ function delay() {
       };
     }); // end W1Temp.getSensorsUids
 */
-  }); // end PIN.forEach
-  }); // end Promise
-}
-async function asyncCall() {
-  var result = await delay();
-  // expected output: "resolved"
-}
-
-asyncCall();
-console.log('pinBus: ', pinBus); 
-
 
 /*
 function delay() {
