@@ -50,7 +50,9 @@ function delay() {
 return new Promise(function(resolve,reject) {
 PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
-      sensorsUidsArray.push(sensorsUids);
+      sensorsUidsArray[i] = sensorsUids;
+      i++;
+      //sensorsUidsArray.push(sensorsUids);
       console.log('sensorsUidsArray1: ', sensorsUidsArray);
       resolve(sensorsUidsArray);
     }); // end W1Temp.getSensorsUids
