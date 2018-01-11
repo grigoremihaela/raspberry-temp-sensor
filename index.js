@@ -17,7 +17,13 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
-var sensorsUids = [4, 0, 7, 9, 0, 13, 0, 0, 19, 0, 22];
+var sensorsUids = [ 
+                    [ '28-031770f1c0ff', '28-0516a1dd9cff', '28-0316a1d3faff', '28-0416a165a5ff' ], 
+                    [ '00-c1e000000000', '00-21e000000000', '00-a1e000000000' ],
+                    [], [], [], [], [],
+                    [ '28-0316a1a16fff' ], [], [], [ '28-03177067f9ff' ]
+                    ];
+
 var pinBus = [];
 var i = 0; 
 
@@ -25,7 +31,7 @@ function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
     sensorsUids.forEach(function(value, index) {
-      if(value === pin){
+      if(sensorsUids.length > 0){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
