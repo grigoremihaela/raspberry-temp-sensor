@@ -47,8 +47,8 @@ async function asyncCall() {
   var result = await delay();
   // expected output: "resolved"
 }
+pinBus = asyncCall();
 
-asyncCall();
 console.log('pinBus: ', pinBus);  
 
 /*
