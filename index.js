@@ -61,7 +61,7 @@ console.log('pinBus: ', pinBus);  // []
 // set gpio pin 6 to use as W1 data channel
 // if is not set by instructions above (required root permissions)
 //W1Temp.setGpioData(6)
-
+/*
 // v3  too slowly?
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 17, 'busMaster': 'w1_bus_master8'}, 
@@ -76,7 +76,7 @@ pinBus.forEach(function(pinBusMaster) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-
+*/
 /*
 //v1
 W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
