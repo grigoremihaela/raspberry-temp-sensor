@@ -32,8 +32,8 @@ function delay1() {
 PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       sensorsUidsArray.push(sensorsUids);
-      resolve(sensorsUidsArray);
       console.log('sensorsUidsArray: ', sensorsUidsArray);
+      resolve(sensorsUidsArray);
     }); // end W1Temp.getSensorsUids
  }); // end PIN.forEach
   }); // end Promise
@@ -43,8 +43,8 @@ async function asyncCall1() {
   // expected output: "resolved"
 }
 
-asyncCall1();
-console.log('pinBus: ', pinBus);
+sensorsUidsArray = asyncCall1();
+console.log('sensorsUidsArray: ', sensorsUidsArray);
 /*
 function getSensorsUidsArray() {
 return new Promise(function(resolve,reject) {
