@@ -53,7 +53,14 @@ async function asyncGetPinBusArray() {
 asyncGetPinBusArray();
 console.log('pinBus: ', pinBus);
 
-var sensorsUidsTest = W1Temp.getSensorsUids('w1_bus_master1');
+
+async function asyncCall1() {
+  var sensorsUidsTest = await W1Temp.getSensorsUids('w1_bus_master1');
+  // expected output: "resolved"
+}
+
+asyncCall1();
+
 console.log('sensorsUidsTest: ', sensorsUidsTest);
 /*
 function delay() {
