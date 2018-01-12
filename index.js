@@ -73,5 +73,5 @@ new Promise((resolve, reject) => {
     }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
 });
-
+*/
 
