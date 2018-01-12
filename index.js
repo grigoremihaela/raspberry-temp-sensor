@@ -75,7 +75,7 @@ new Promise((resolve, reject) => {
   }); // end PIN.forEach
 });
 
-var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' 
+var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
 var promises = sensorsUids.map(function(sensorsUid, index){
          return new Promise(function(resolve,reject) {
               W1Temp.getSensor(sensorsUid).then(function (sensor) {
