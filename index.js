@@ -70,6 +70,7 @@ var promises1 = PIN.map(function(pin, bus){
                    pinBus.push({ 'pin': pin, 'busMaster': w1BusMaster[bus] });
                  };
               }); // end W1Temp.getSensor
+              console.log('pinBus1', pinBus);
               return resolve(pinBus);
          })
         })
