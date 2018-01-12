@@ -23,7 +23,7 @@ PIN.map(function(pin, bus){
                    pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
                    i++;
                  };
-                 resolve(pinBus);
+                 return pinBus;
          })
        })
   }); // return new Promise
