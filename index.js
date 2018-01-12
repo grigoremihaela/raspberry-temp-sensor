@@ -75,4 +75,24 @@ new Promise((resolve, reject) => {
   }); // end PIN.forEach
 });
 
+var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' 
+var promises = sensorsUids.map(function(sensorsUid, index){
+         return new Promise(function(resolve,reject) {
+              W1Temp.getSensor(sensorsUid).then(function (sensor) {
+                 if (pinBus.length === 0) {
+                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
+                 };
+                 if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
+                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
+                 };
+              }); // end W1Temp.getSensor
+                 return resolve(pinBus);
+         })
+})
+console.log('promises', JSON.stringify(promises));
+Promise.all(promises).then(function(results) {
+    console.log('results', results[0])
+})
+console.log(pinBus);
+
 
