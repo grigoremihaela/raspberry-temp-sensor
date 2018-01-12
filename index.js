@@ -51,6 +51,7 @@ Promise.all(promises).then(function(results) {
     console.log('results', results[0])
 })
 */
+new Promise((resolve, reject) => {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       sensorsUids.forEach(function(value, index) {
@@ -64,9 +65,10 @@ Promise.all(promises).then(function(results) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
           };
-          res(pinBus);
-          console.log(pinBus); 
+          resolve(pinBus);
+          //console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
         }); // end W1Temp.getSensor
       }); // end sensorsUids.forEach
     }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
+});
