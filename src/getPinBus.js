@@ -11,25 +11,23 @@ var i = 0;
 
 function delay() {
   return new Promise((res, reject) => {
-  PIN.forEach(function(pin, bus) {
-    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
-      sensorsUids.forEach(function(value, index) {
-        W1Temp.getSensor(value).then(function (sensor) {
-          //console.log(pin, '   ', w1BusMaster[bus]);
-          if (i==0) {
-            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
-            i++;
-          };
-          if (i>0 && pinBus[i-1].pin!=pin) {
-            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
-            i++;
-          };
-          res(pinBus);
-          //console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
-        }); // end W1Temp.getSensor
-      }); // end sensorsUids.forEach
-    }); // end W1Temp.getSensorsUids
-  }); // end PIN.forEach
+PIN.map(function(pin, bus){
+  return W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+       sensorsUids.map(function(sensorsUid, index){
+         return W1Temp.getSensor(value).then(function (sensor) {
+                 if (i==0) {
+                   pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+                   i++;
+                 };
+                 if (i>0 && pinBus[i-1].pin!=pin) {
+                   pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+                   i++;
+                 };
+                 resolve(pinBus);
+         })
+       })
+  }); // return new Promise
+}) // PIN map
 })
 }
 
@@ -39,9 +37,8 @@ async function asyncCall() {
   console.log('result: ', result); 
 }
 
-
+asyncCall();
 module.exports.GetPinBus  = function () { 
-  asyncCall();
   console.log('pinBus1: ', pinBus);  // []
     return pinBus;
   }
