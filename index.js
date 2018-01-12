@@ -24,9 +24,8 @@ async function asyncSensorsUidsArray() {
   // expected output: "resolved"
   console.log('sensorsUids1: ', sensorsUids);  
 }
-asyncSensorsUidsArray(); 
+sensorsUids = asyncSensorsUidsArray(); 
 console.log('sensorsUids2: ', sensorsUids); 
-
 /*
 function delay(sensorsUids) {
 var promises = sensorsUids.map(function(sensorsUid){
