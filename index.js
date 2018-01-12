@@ -25,8 +25,9 @@ var promises = sensorsUids.map(function(sensorsUid, index){
          })
 })
 Promise.all(promises).then(function(results) {
-    console.log('results', results)
+    console.log('results', results[0])
 })
+console.log('pinBus1 ', pinBus);
 return  pinBus;
 }
 //pinBus = delay(sensorsUids);
@@ -36,7 +37,9 @@ var promises1 = w1BusMasters.map(function(w1BusMaster, index){
          return new Promise(function(resolve,reject) {
             W1Temp.getSensorsUids(w1BusMaster).then(function (sensorsUids) {
               if (sensorsUids.length > 0) {
+                console.log('sensorsUids ', sensorsUids);
                 pinBus = delay(sensorsUids);
+                console.log('pinBus2 ', pinBus);
                 return resolve(pinBus);
               };
             }); // end W1Temp.getSensorsUids
