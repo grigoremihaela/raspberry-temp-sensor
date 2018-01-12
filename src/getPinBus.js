@@ -33,13 +33,15 @@ function delay() {
 })
 }
 
-async function GetPinBus(pinBus) {
-  var pinBus = await delay();
+async function asyncCall() {
+  var result = await delay();
   // expected output: "resolved"
-  console.log('result: ', pinBus);  // []
+  console.log('result: ', result); 
 }
 
+
 module.exports.GetPinBus  = function () { 
+  asyncCall();
   console.log('pinBus1: ', pinBus);  // []
     return pinBus;
   }
