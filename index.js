@@ -14,7 +14,7 @@ var pinBus = [];
 
 function getSensorsUidsArray() {
   return new Promise(function(resolve,reject) {
-    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+    W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
       resolve(sensorsUids);
     })
   })
