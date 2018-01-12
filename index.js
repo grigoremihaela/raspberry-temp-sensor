@@ -9,7 +9,7 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 
-var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
+//var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
 var pinBus = [];
 
 function delay(sensorsUids) {
@@ -29,7 +29,20 @@ Promise.all(promises).then(function(results) {
 })
 return  pinBus;
 }
-pinBus = delay(sensorsUids);
+//pinBus = delay(sensorsUids);
+//console.log(pinBus);
+
+var promises1 = w1BusMasters.map(function(w1BusMaster, index){
+         return new Promise(function(resolve,reject) {
+            W1Temp.getSensorsUids(w1BusMaster).then(function (sensorsUids) {
+                pinBus = delay(sensorsUids);
+                return resolve(pinBus);
+            }); // end W1Temp.getSensorsUids
+         })
+})
+Promise.all(promises1).then(function(results) {
+    console.log('results1', results1[0])
+})
 console.log(pinBus);
 
 
