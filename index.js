@@ -9,8 +9,34 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 
-var sensorsUids = [ ];
+var sensorsUids = [];
 var pinBus = [];
+
+function getPinBusArray() {
+  return new Promise(function(resolve,reject) {
+  PIN.forEach(function(pin, bus) {
+    //console.log(sensorsUids1[bus], sensorsUids1[bus].length);
+      if(sensorsUids1[bus].length > 0){
+          if (i==0) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          if (i>0 && pinBus[i-1].pin!=pin) {
+            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
+            i++;
+          };
+          resolve(pinBus);
+      };
+  }); // end PIN.forEach
+  }); // end Promise
+}
+async function asyncGetPinBusArray() {
+  var result = await getPinBusArray();
+  // expected output: "resolved"
+}
+
+asyncGetPinBusArray();
+console.log('pinBus: ', pinBus);
 
 function getSensorsUidsArray() {
   return new Promise(function(resolve,reject) {
