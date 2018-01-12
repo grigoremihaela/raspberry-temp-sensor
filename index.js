@@ -32,6 +32,7 @@ pinBus.forEach(function(pinBusMaster) {
   }); // end W1Temp.getSensorsUids()
 }); // end PIN.forEach()
 */
+/*
 var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
 var pinBus = [];
 
@@ -51,27 +52,40 @@ Promise.all(promises).then(function(results) {
     console.log('results', results[0])
 })
 console.log(pinBus);
-/*
-new Promise((resolve, reject) => {
-  PIN.forEach(function(pin, bus) {
-    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
-      sensorsUids.forEach(function(value, index) {
-        W1Temp.getSensor(value).then(function (sensor) {
-          //console.log(pin, '   ', w1BusMaster[bus]);
-          if (i==0) {
-            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
-            i++;
-          };
-          if (i>0 && pinBus[i-1].pin!=pin) {
-            pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
-            i++;
-          };
-          resolve(pinBus);
-          console.log(pinBus); // [ { pin: 4, busMaster: 'w1_bus_master1' },{ pin: 17, busMaster: 'w1_bus_master8' },{ pin: 22, busMaster: 'w1_bus_master11' } ]
-        }); // end W1Temp.getSensor
-      }); // end sensorsUids.forEach
-    }); // end W1Temp.getSensorsUids
-  }); // end PIN.forEach
-});
 */
+var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
+
+var promises1 = PIN.map(function(pin, bus){
+  return new Promise((resolve, reject) => {
+  
+    //W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+
+        var promises = sensorsUids.map(function(sensorsUid, index){
+         return new Promise(function(resolve,reject) {
+              W1Temp.getSensor(sensorsUid).then(function (sensor) {
+                 if (pinBus.length === 0) {
+                   pinBus.push({ 'pin': pin, 'busMaster': w1BusMaster[bus] });
+                 };
+                 if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
+                   pinBus.push({ 'pin': pin, 'busMaster': w1BusMaster[bus] });
+                 };
+              }); // end W1Temp.getSensor
+              return resolve(pinBus);
+         })
+        })
+        console.log('promises', JSON.stringify(promises));
+        Promise.all(promises).then(function(results) {
+            //console.log('results', results[0])
+        })
+        console.log(pinBus);
+        return resolve(pinBus);
+
+    //}); // end W1Temp.getSensorsUids
+  })
+})
+Promise.all(promises1).then(function(results1) {
+    console.log('results1', results1)
+})
+console.log(pinBus);
+
 
