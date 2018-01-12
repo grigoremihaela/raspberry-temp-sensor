@@ -9,6 +9,10 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master11'
                    ];
 */
+var getPinBus=require('./src/getPinBus');
+var pinBus = getPinBus.GetPinBus();
+console.log('pinBus: ', pinBus);  // []
+/*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
               {'pin': 7, 'busMaster': 'w1_bus_master3'},
@@ -28,3 +32,4 @@ pinBus.forEach(function(pinBusMaster) {
     }); // end sensorsUids.forEach()
   }); // end W1Temp.getSensorsUids()
 }); // end PIN.forEach()
+*/
