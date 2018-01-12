@@ -22,12 +22,12 @@ var promises = sensorsUids.map(function(sensorsUid){
                  if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
                    pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
                  };
-                 return resolve(pinBus);
             })
+                 return resolve(pinBus);
          })
 })
 Promise.all(promises).then(function(results) {
-    console.log('results', results[0])
+    console.log('results', results)
 })
 console.log('pinBus1 ', pinBus);
 return  pinBus;
