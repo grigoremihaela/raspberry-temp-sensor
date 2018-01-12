@@ -57,7 +57,7 @@ new Promise((resolve, reject) => {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
 
-        var promises = sensorsUids.map(function(sensorsUid, index){
+var promises = sensorsUids.map(function(sensorsUid, index){
          return new Promise(function(resolve,reject) {
               W1Temp.getSensor(sensorsUid).then(function (sensor) {
                  if (pinBus.length === 0) {
@@ -69,12 +69,12 @@ new Promise((resolve, reject) => {
               }); // end W1Temp.getSensor
               return resolve(pinBus);
          })
-        })
-        console.log('promises', JSON.stringify(promises));
-        Promise.all(promises).then(function(results) {
-            //console.log('results', results[0])
-        })
-        console.log(pinBus);
+})
+console.log('promises', JSON.stringify(promises));
+Promise.all(promises).then(function(results) {
+    console.log('results', results[0])
+})
+console.log(pinBus);
 
 
       }); // end sensorsUids.forEach
