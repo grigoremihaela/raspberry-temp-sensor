@@ -13,7 +13,7 @@ var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-04
 var pinBus = [];
 
 function delay(sensorsUids) {
-var promises = sensorsUids.map(function(sensorsUid, index){
+var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
             W1Temp.getSensor(sensorsUid).then(function (sensor) {
                  if (pinBus.length === 0) {
@@ -35,7 +35,7 @@ return  pinBus;
 //pinBus = delay(sensorsUids);
 //console.log(pinBus);
 function delay2() {
-var promises1 = w1BusMasters.map(function(w1BusMaster, index){
+var promises1 = w1BusMasters.map(function(w1BusMaster){
          return new Promise(function(resolve,reject) {
             //W1Temp.getSensorsUids(w1BusMaster).then(function (sensorsUids) {
               if (sensorsUids.length > 0) {
