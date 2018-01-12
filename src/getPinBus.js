@@ -14,7 +14,7 @@ function delay() {
 PIN.map(function(pin, bus){
   return W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
        sensorsUids.map(function(sensorsUid, index){
-         return W1Temp.getSensor(value).then(function (sensor) {
+         return W1Temp.getSensor(sensorsUid).then(function (sensor) {
                  if (i==0) {
                    pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
                    i++;
