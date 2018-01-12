@@ -40,7 +40,7 @@ var promises1 = w1BusMasters.map(function(w1BusMaster, index){
             }); // end W1Temp.getSensorsUids
          })
 })
-Promise.all(promises1).then(function(results) {
+Promise.all(promises1).then(function(results1) {
     console.log('results1', results1[0])
 })
 console.log(pinBus);
