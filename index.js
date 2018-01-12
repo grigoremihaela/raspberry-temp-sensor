@@ -15,7 +15,7 @@ var pinBus = [];
 function delay(sensorsUids) {
 var promises = sensorsUids.map(function(sensorsUid, index){
          return new Promise(function(resolve,reject) {
-            W1Temp.getSensor(value).then(function (sensor) {
+            W1Temp.getSensor(sensorsUid).then(function (sensor) {
                  if (pinBus.length === 0) {
                    pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
                  };
