@@ -20,12 +20,13 @@ function getSensorsUidsArray() {
   })
 }
 async function asyncSensorsUidsArray() {
-  var sensorsUids = await getSensorsUidsArray();
+  var result = await getSensorsUidsArray();
   // expected output: "resolved"
   console.log('sensorsUids1: ', sensorsUids);  
 }
-sensorsUids = asyncSensorsUidsArray(); 
+asyncSensorsUidsArray(); 
 console.log('sensorsUids2: ', sensorsUids); 
+
 /*
 function delay(sensorsUids) {
 var promises = sensorsUids.map(function(sensorsUid){
