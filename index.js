@@ -42,8 +42,8 @@ var promises1 = w1BusMasters.map(function(w1BusMaster){
                 console.log('sensorsUids ', sensorsUids);
                 pinBus = delay(sensorsUids);
                 console.log('pinBus2 ', pinBus);
-                return resolve(pinBus);
               };
+              return resolve(pinBus);
             //}); // end W1Temp.getSensorsUids
          })
 })
