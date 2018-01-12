@@ -56,7 +56,7 @@ console.log(pinBus);
 var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
 
 var promises1 = PIN.map(function(pin, bus){
-  return new Promise((resolve, reject) => {
+  return new Promise((res, reject) => {
   
     //W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
 
@@ -73,12 +73,11 @@ var promises1 = PIN.map(function(pin, bus){
               return resolve(pinBus);
          })
         })
-        console.log('promises', JSON.stringify(promises));
         Promise.all(promises).then(function(results) {
-            //console.log('results', results[0])
+            console.log('results', results)
         })
-        console.log(pinBus);
-        return resolve(pinBus);
+        console.log('pinBus', pinBus);
+        return res(pinBus);
 
     //}); // end W1Temp.getSensorsUids
   })
