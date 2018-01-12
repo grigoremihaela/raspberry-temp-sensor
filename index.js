@@ -9,21 +9,21 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 
-//var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
+var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
 var pinBus = [];
 
 function delay(sensorsUids) {
 var promises = sensorsUids.map(function(sensorsUid, index){
          return new Promise(function(resolve,reject) {
-             W1Temp.getSensor(sensorsUid).then(function (sensor) {
+            W1Temp.getSensor(value).then(function (sensor) {
                  if (pinBus.length === 0) {
                    pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
                  };
                  if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
                    pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
                  };
+            }); // end W1Temp.getSensor
                  return resolve(pinBus);
-              }); // end W1Temp.getSensor
          })
 })
 Promise.all(promises).then(function(results) {
@@ -37,14 +37,14 @@ return  pinBus;
 function delay2() {
 var promises1 = w1BusMasters.map(function(w1BusMaster, index){
          return new Promise(function(resolve,reject) {
-            W1Temp.getSensorsUids(w1BusMaster).then(function (sensorsUids) {
+            //W1Temp.getSensorsUids(w1BusMaster).then(function (sensorsUids) {
               if (sensorsUids.length > 0) {
                 console.log('sensorsUids ', sensorsUids);
                 pinBus = delay(sensorsUids);
                 console.log('pinBus2 ', pinBus);
                 return resolve(pinBus);
               };
-            }); // end W1Temp.getSensorsUids
+            //}); // end W1Temp.getSensorsUids
          })
 })
 Promise.all(promises1).then(function(results1) {
