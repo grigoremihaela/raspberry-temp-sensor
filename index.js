@@ -51,7 +51,7 @@ Promise.all(promises).then(function(results) {
     console.log('results', results[0])
 })
 */
-new Promise((resolve, reject) => {
+var promises = new Promise((resolve, reject) => {
   PIN.forEach(function(pin, bus) {
     W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
       sensorsUids.forEach(function(value, index) {
@@ -72,3 +72,7 @@ new Promise((resolve, reject) => {
     }); // end W1Temp.getSensorsUids
   }); // end PIN.forEach
 });
+
+Promise.all(promises).then(function(results) {
+    console.log('results', results)
+})
