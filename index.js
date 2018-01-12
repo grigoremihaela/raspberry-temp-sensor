@@ -17,8 +17,8 @@ var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'},
               {'pin': 13, 'busMaster': 'w1_bus_master6'}, 
               {'pin': 15, 'busMaster': 'w1_bus_master7'},
               {'pin': 17, 'busMaster': 'w1_bus_master8'}, 
-              {'pin': 19, 'busMaster': 'w1_bus_master7'},
-              {'pin': 21, 'busMaster': 'w1_bus_master8'}, 
+              {'pin': 19, 'busMaster': 'w1_bus_master9'},
+              {'pin': 21, 'busMaster': 'w1_bus_master10'}, 
               {'pin': 22, 'busMaster': 'w1_bus_master11'}                      
               ];
 pinBus.forEach(function(pinBusMaster) {
