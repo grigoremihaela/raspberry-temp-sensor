@@ -50,10 +50,10 @@ var promises1 = w1BusMasters.map(function(w1BusMaster){
 Promise.all(promises1).then(function(results1) {
     console.log('results1', results1)
 })
-console.log('pinBus ', pinBus);
 return  pinBus;
 }
 pinBus = delay2();
+console.log('pinBus ', pinBus);
 //console.log('pinBus ', pinBus);
 
 
