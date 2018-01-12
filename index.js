@@ -53,6 +53,36 @@ Promise.all(promises).then(function(results) {
 })
 console.log(pinBus);
 */
+new Promise((resolve, reject) => {
+  PIN.forEach(function(pin, bus) {
+    W1Temp.getSensorsUids(w1BusMaster[bus]).then(function (sensorsUids) {
+
+        var promises = sensorsUids.map(function(sensorsUid, index){
+         return new Promise(function(resolve,reject) {
+              W1Temp.getSensor(sensorsUid).then(function (sensor) {
+                 if (pinBus.length === 0) {
+                   pinBus.push({ 'pin': pin, 'busMaster': w1BusMaster[bus] });
+                 };
+                 if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
+                   pinBus.push({ 'pin': pin, 'busMaster': w1BusMaster[bus] });
+                 };
+              }); // end W1Temp.getSensor
+              return resolve(pinBus);
+         })
+        })
+        console.log('promises', JSON.stringify(promises));
+        Promise.all(promises).then(function(results) {
+            //console.log('results', results[0])
+        })
+        console.log(pinBus);
+
+
+      }); // end sensorsUids.forEach
+    }); // end W1Temp.getSensorsUids
+  }); // end PIN.forEach
+});
+
+/*
 var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
 
 var promises1 = PIN.map(function(pin, bus){
@@ -63,15 +93,19 @@ var promises1 = PIN.map(function(pin, bus){
         var promises = sensorsUids.map(function(sensorsUid, index){
          return new Promise(function(resolve,reject) {
               W1Temp.getSensor(sensorsUid).then(function (sensor) {
-                console.log('pin ', pin, 'bus ', bus);
-                pinBus.push({ 'pin': pin, 'busMaster': w1BusMaster[bus] });
+                 if (pinBus.length === 0) {
+                   pinBus.push({ 'pin': pin, 'busMaster': w1BusMaster[bus] });
+                 };
+                 if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
+                   pinBus.push({ 'pin': pin, 'busMaster': w1BusMaster[bus] });
+                 };
               }); // end W1Temp.getSensor
               console.log('pinBus1', pinBus);
               return resolve(pinBus);
          })
         })
         Promise.all(promises).then(function(results) {
-            console.log('results', results[0])
+            console.log('results', results)
         })
         console.log('pinBus', pinBus);
         return res(pinBus);
@@ -80,8 +114,9 @@ var promises1 = PIN.map(function(pin, bus){
   })
 })
 Promise.all(promises1).then(function(results1) {
-    console.log('results1', results1[0])
+    console.log('results1', results1)
 })
 console.log(pinBus);
+*/
 
 
