@@ -23,6 +23,7 @@ async function asyncSensorsUidsArray() {
   var sensorsUids = await getSensorsUidsArray();
   // expected output: "resolved"
   console.log('sensorsUids1: ', sensorsUids);  
+  return sensorsUids;
 }
 var sensorsUids = asyncSensorsUidsArray(); 
 console.log('sensorsUids2: ', sensorsUids); 
