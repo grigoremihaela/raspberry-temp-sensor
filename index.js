@@ -44,10 +44,24 @@ var promises = w1BusMasters.map(function(sensorsUid, index){
     return resolve(sensorsUids);
   })
 })
-sensorsUids = Promise.all(promises).then(function(results) {
-    console.log('results', results);
+
+function getSensorsUidsArray() {
+  return new Promise(function(resolve,reject) {
+    var sensorsUids = Promise.all(promises).then(function(results) {
+      console.log('results', results);
+    });
+    return resolve(sensorsUids);
   })
-console.log('sensorsUids2: ', sensorsUids);
+}
+async function asyncSensorsUidsArray() {
+  var sensorsUids = await getSensorsUidsArray();
+  // expected output: "resolved"
+  console.log('sensorsUids1: ', sensorsUids);  
+  return sensorsUids;
+}
+var sensorsUids = asyncSensorsUidsArray(); 
+console.log('sensorsUids2: ', sensorsUids); 
+
 /*
 //good
 var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
