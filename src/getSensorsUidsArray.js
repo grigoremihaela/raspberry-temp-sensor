@@ -18,17 +18,14 @@ function getArray() {
   })
 }
 async function asyncArray() {
-  return await getArray();
+  var result =  await getArray();
   // expected output: "resolved"
-  //console.log('sensorsUids1: ', sensorsUids);  
+  //console.log('sensorsUids1: ', sensorsUids); 
+  return result; 
 }
 
- asyncArray().then( function(sensorsUids) {
-    // Do something with result.
-    
-    return sensorsUids;  
- });
- console.log('sensorsUids2: ', sensorsUids);  
+ sensorsUids = asyncArray();
+ console.log('sensorsUids2: ', sensorsUids);
 module.exports.GetSensorsUidsArray  = function () {
-    return sensorsUids; 
+   return sensorsUids; 
 }
