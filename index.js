@@ -16,7 +16,7 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    ];
 var sensorsUids = [];
 var pinBus = [];
-
+var sensorsUids = [ '28-031770f1c0ff','28-0516a1dd9cff','28-0316a1d3faff','28-0416a165a5ff' ];
 function delay(sensorsUids) {
 var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
