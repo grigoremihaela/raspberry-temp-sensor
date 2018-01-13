@@ -12,6 +12,7 @@ var sensorsUids = [];
 var pinBus = [];
 
 var getSensorsUidsArray = require('./src/getSensorsUidsArray');
+
 var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray();
 console.log('sensorsUids: ', sensorsUids);  // []
 /*
