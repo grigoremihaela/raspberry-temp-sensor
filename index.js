@@ -23,11 +23,15 @@ async function asyncArray(result) {
   //console.log('sensorsUids1: ', result);  
 }
 function getsensorsUidsArray() {
-asyncArray().then( function(sensorsUids) {
-    // Do something with result.
+  return new Promise(function(resolve,reject) {
+    asyncArray().then( function(sensorsUids) {
+        // Do something with result.
+        resolve(sensorsUids);
+    })
     return sensorsUids;
-})
+  })
 }
+
 sensorsUids = getsensorsUidsArray();
 console.log('sensorsUids2: ', sensorsUids);
 /*
