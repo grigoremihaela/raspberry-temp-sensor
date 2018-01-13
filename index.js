@@ -43,22 +43,23 @@ var sensorsUids = [
                     ];
 
 var pinBus = [];
+var sensorsUid = [];
 var i = 0; 
 function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
     sensorsUids.forEach(function(sensorsUid, index) {
       console.log(sensorsUid.length, ' ', sensorsUid);
-      if( (sensorsUid.length) > 0){
+      if(sensorsUid && sensorsUid.length){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
-          };
+          }
           if (i>0 && pinBus[i-1].pin!=pin) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
-          };
-      };
+          }
+      }
       resolve(pinBus);
       }); // end sensorsUids.forEach
   }); // end PIN.forEach
