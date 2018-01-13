@@ -31,14 +31,12 @@ pinBus.forEach(function(pinBusMaster) {
   }); // end W1Temp.getSensorsUids()
 }); // end PIN.forEach()
 */
-function delay() {
-var promises = sensorsUids.map(function(sensorsUid){
-  return new Promise(function(resolve,reject) {
+
+var promises = new Promise(function(resolve,reject) {
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
       resolve(sensorsUids);
     })
     return sensorsUids;
-  })
 })
 Promise.all(promises).then(function(results) {
     console.log('results', results)
