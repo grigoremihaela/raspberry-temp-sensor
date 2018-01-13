@@ -16,10 +16,12 @@ var promises = new Promise(function(resolve,reject) {
     })  
   })
 module.exports.GetSensorsUidsArray  = function() {
-  Promise.resolve(promises).then(function(results) {
-    console.log('results', results);
-    return results; 
-  }) 
+  return new Promise(function(resolve,reject) {
+    Promise.resolve(promises).then(function(results) {
+      console.log('results', results);
+      return resolve(results);
+    }) 
+  })
 } 
 
 
