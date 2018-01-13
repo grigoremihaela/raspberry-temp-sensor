@@ -21,7 +21,11 @@ function GetSensorsUidsArray (callback) {
 module.exports.GetSensorsUidsArray  = function () {
    return sensorsUids; 
 }
-
+/*
+var getSensorsUidsArray=require('./src/getSensorsUidsArray');
+var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray();
+console.log('sensorsUids: ', sensorsUids);  // []
+*/
 /*
 function getArray() {
   return new Promise(function(resolve,reject) {
