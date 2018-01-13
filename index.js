@@ -37,8 +37,29 @@ Promise.all(promises).then(function(results) {
 console.log('pinBus1 ', pinBus);
 return  pinBus;
 }
-pinBus = delay(sensorsUids);
-console.log(pinBus);
+//pinBus = delay(sensorsUids);
+//console.log(pinBus);
+function delay2() {
+var promises1 = w1BusMasters.map(function(w1BusMaster){
+         return new Promise(function(resolve,reject) {
+            //W1Temp.getSensorsUids(w1BusMaster)
+              if (sensorsUids.length > 0) {
+                console.log('sensorsUids ', sensorsUids);
+                pinBus = delay(sensorsUids);
+                console.log('pinBus2 ', pinBus);
+              };
+              return resolve(pinBus);
+            //}); // end W1Temp.getSensorsUids
+         })
+})
+Promise.all(promises1).then(function(results1) {
+    console.log('results1', results1)
+})
+return  pinBus;
+}
+pinBus = delay2();
+console.log('pinBus ', pinBus);
+//console.log('pinBus ', pinBus);
 
 
 var promises = new Promise(function(resolve,reject) {
