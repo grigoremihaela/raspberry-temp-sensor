@@ -42,9 +42,6 @@ Promise.all(promises).then(function(results) {
     console.log('results', results)
 })
 console.log('sensorsUids ', sensorsUids);
-return  sensorsUids;
-}
-console.log(sensorsUids);
 
 /*
 //good
