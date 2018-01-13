@@ -18,7 +18,6 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                      'w1_bus_master21', 'w1_bus_master22', 'w1_bus_master23', 'w1_bus_master24'
                      ];
 */
-
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMasters[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
