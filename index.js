@@ -16,15 +16,15 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    ];
 var sensorsUids = [];
 var pinBus = [];
-function GetSensorsUidsArray (callback) {  
-  return new Promise((resolve, reject) => {
-    W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      return callback ? callback(null, sensorsUids) : resolve(sensorsUids)
+var promiseResolve, promiseReject;
+
+var promise =  W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
+      promiseResolve = resolve(sensorsUids);
+      return promiseResolve;
     })    
-  })
-}
-var sensorsUids = GetSensorsUidsArray();
-console.log('sensorsUids1: ', sensorsUids); 
+
+
+console.log(promiseResolve());
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
