@@ -17,6 +17,7 @@ var promises = new Promise(function(resolve,reject) {
 Promise.resolve(promises).then(function(results) {
     console.log('results', results)
 })
+console.log('sensorsUids ', sensorsUids);
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
