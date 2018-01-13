@@ -14,7 +14,7 @@ var promises = new Promise(function(resolve,reject) {
       return resolve(sensorsUids);
     })  
   })
-Promise.all(promises).then(function(results) {
+Promise.resolve(promises).then(function(results) {
     console.log('results', results)
 })
 /*
