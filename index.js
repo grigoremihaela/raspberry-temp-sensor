@@ -22,13 +22,13 @@ async function asyncArray(result) {
   result = await getArray();
   //console.log('sensorsUids1: ', result);  
 }
-function getArray() {
+function getsensorsUidsArray() {
 asyncArray().then( function(sensorsUids) {
     // Do something with result.
     return sensorsUids;
 })
 }
-sensorsUids = getArray();
+sensorsUids = getsensorsUidsArray();
 console.log('sensorsUids2: ', sensorsUids);
 /*
 var promises = w1BusMasters.map(function(w1BusMaster){
