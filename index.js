@@ -2,6 +2,7 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp=require('./src/api/temp'); 
+var getSensorsUidsArray=require('./src/getSensorsUidsArray'); 
 /*  "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
 var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
@@ -9,18 +10,8 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master11'
                    ];
 */
-var sensorsUids = [];
-var promises = new Promise(function(resolve,reject) {
-    W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      return resolve(sensorsUids);
-    })  
-  })
-console.log('promises ', promises);
-console.log('sensorsUids1 ', sensorsUids);
-Promise.resolve(promises).then(function(results) {
-    console.log('results', results)
-})
-console.log('sensorsUids2 ', sensorsUids);
+var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray();
+console.log('sensorsUids: ', sensorsUids);  // []
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
