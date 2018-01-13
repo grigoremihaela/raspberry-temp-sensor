@@ -10,7 +10,7 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    ];
 */
 var getSensorsUidsArray=require('./src/getSensorsUidsArray');
-var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray;
+var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray();
 console.log('sensorsUids: ', sensorsUids);  // []
 
 /*
