@@ -40,27 +40,13 @@ var pinBus = [];
 
 var promises = w1BusMasters.map(function(sensorsUid, index){
   return new Promise(function(resolve,reject) {
-    W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      resolve(sensorsUids);
-    })
-    return sensorsUids;
+    var sensorsUids = W1Temp.getSensorsUids('w1_bus_master1');
+    return resolve(sensorsUids);
   })
 })
-
-function getSensorsUidsArray() {
-  Promise.all(promises).then(function(results) {
+Promise.all(promises).then(function(results) {
     console.log('results', results);
-  }).then(function (sensorsUids) {
-    return results;
   })
-}
-async function asyncSensorsUidsArray() {
-  var sensorsUids = await getSensorsUidsArray();
-  // expected output: "resolved"
-  console.log('sensorsUids1: ', sensorsUids);  
-  return sensorsUids;
-}
-var sensorsUids = asyncSensorsUidsArray(); 
 console.log('sensorsUids2: ', sensorsUids);
 /*
 //good
