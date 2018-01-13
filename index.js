@@ -2,15 +2,9 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp=require('./src/api/temp'); 
-/*  "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
-var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
+
+var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22]; // "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
 var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
-                   'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
-                   'w1_bus_master11'
-                   ];
-*/
-var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
-var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
@@ -27,7 +21,52 @@ var promises = w1BusMasters.map(function(w1BusMaster){
 Promise.all(promises).then(function(results) {
     console.log('results', results)
 })
-console.log('sensorsUids: ', sensorsUids); 
+//console.log('sensorsUids: ', sensorsUids); 
+
+function delay(sensorsUids) {
+var promises = sensorsUids.map(function(sensorsUid){
+         return new Promise(function(resolve,reject) {
+            if (W1Temp.getSensor(sensorsUid)) {
+                 if (pinBus.length === 0) {
+                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
+                 };
+                 if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
+                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
+                 };
+            };
+            return resolve(pinBus);
+         })
+})
+Promise.all(promises).then(function(results) {
+    console.log('results', results)
+})
+console.log('pinBus1 ', pinBus);
+return  pinBus;
+}
+//pinBus = delay(sensorsUids);
+//console.log(pinBus);
+function delay2() {
+var promises1 = w1BusMasters.map(function(w1BusMaster){
+         return new Promise(function(resolve,reject) {
+            //W1Temp.getSensorsUids(w1BusMaster)
+              if (sensorsUids.length > 0) {
+                console.log('sensorsUids ', sensorsUids);
+                pinBus = delay(sensorsUids);
+                console.log('pinBus2 ', pinBus);
+              };
+              return resolve(pinBus);
+            //}); // end W1Temp.getSensorsUids
+         })
+})
+Promise.all(promises1).then(function(results1) {
+    console.log('results1', results1)
+})
+return  pinBus;
+}
+pinBus = delay2();
+console.log('pinBus ', pinBus);
+//console.log('pinBus ', pinBus);
+
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
@@ -113,51 +152,6 @@ async function asyncSensorsUidsArray() {
 }
 var sensorsUids = asyncSensorsUidsArray(); 
 console.log('sensorsUids2: ', sensorsUids); 
-*/
-/*
-function delay(sensorsUids) {
-var promises = sensorsUids.map(function(sensorsUid){
-         return new Promise(function(resolve,reject) {
-            if (W1Temp.getSensor(sensorsUid)) {
-                 if (pinBus.length === 0) {
-                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
-                 };
-                 if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
-                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
-                 };
-            };
-            return resolve(pinBus);
-         })
-})
-Promise.all(promises).then(function(results) {
-    console.log('results', results)
-})
-console.log('pinBus1 ', pinBus);
-return  pinBus;
-}
-//pinBus = delay(sensorsUids);
-//console.log(pinBus);
-function delay2() {
-var promises1 = w1BusMasters.map(function(w1BusMaster){
-         return new Promise(function(resolve,reject) {
-            //W1Temp.getSensorsUids(w1BusMaster)
-              if (sensorsUids.length > 0) {
-                console.log('sensorsUids ', sensorsUids);
-                pinBus = delay(sensorsUids);
-                console.log('pinBus2 ', pinBus);
-              };
-              return resolve(pinBus);
-            //}); // end W1Temp.getSensorsUids
-         })
-})
-Promise.all(promises1).then(function(results1) {
-    console.log('results1', results1)
-})
-return  pinBus;
-}
-pinBus = delay2();
-console.log('pinBus ', pinBus);
-//console.log('pinBus ', pinBus);
 */
 
 /*
