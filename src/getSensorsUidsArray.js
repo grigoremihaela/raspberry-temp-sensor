@@ -23,9 +23,5 @@ async function asyncArray() {
   //console.log('sensorsUids1: ', sensorsUids);  
 }
 module.exports.GetSensorsUidsArray  = function () {
-asyncArray().then( function(sensorsUids) {
-    // Do something with result.
-    console.log('sensorsUids2: ', sensorsUids);  
-    return sensorsUids;  
-});
+ return asyncArray();
 }
