@@ -43,7 +43,7 @@ var promises = w1BusMasters.map(function(sensorsUid, index){
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
       resolve(sensorsUids);
     })
-    return resolve(sensorsUids);
+    return sensorsUids;
   })
 })
 Promise.all(promises).then(function(results) {
