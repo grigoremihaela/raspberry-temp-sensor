@@ -49,11 +49,11 @@ function delay() {
   return new Promise(function(resolve,reject) {
   PIN.forEach(function(pin, bus) {
     sensorsUids.forEach(function(sensorsUid, index) {
-          if (sensorsUid && sensorsUid.length !== null && i==0) {
+          if (sensorsUid && sensorsUid !== null && i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
           }
-          if (sensorsUid && sensorsUid.length !== null && i>0 && pinBus[i-1].pin!=pin) {
+          if (sensorsUid && sensorsUid !== null && i>0 && pinBus[i-1].pin!=pin) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
           }
