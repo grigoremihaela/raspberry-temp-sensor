@@ -18,16 +18,16 @@ function getArray() {
     })
   })
 }
-async function asyncArray(result) {
-  result = await getArray();
-  //console.log('sensorsUids1: ', result);  
+async function asyncArray() {
+  return await getArray();
+  // expected output: "resolved"
+  //console.log('sensorsUids1: ', sensorsUids);  
 }
 
 asyncArray().then( function(sensorsUids) {
     // Do something with result.
     console.log('sensorsUids2: ', sensorsUids);
 });
-
 /*
 var promises = w1BusMasters.map(function(w1BusMaster){
   return new Promise(function(resolve,reject) {
