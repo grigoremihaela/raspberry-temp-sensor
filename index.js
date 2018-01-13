@@ -49,7 +49,7 @@ function delay() {
   PIN.forEach(function(pin, bus) {
     sensorsUids.forEach(function(sensorsUid, index) {
       console.log(sensorsUid.length, ' ', sensorsUid);
-      if(sensorsUid && sensorsUid.length !== 0){
+      if( (sensorsUid.length) > 0){
           if (i==0) {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
@@ -58,8 +58,8 @@ function delay() {
             pinBus[i] = { 'pin': pin, 'busMaster': w1BusMaster[bus] };
             i++;
           };
-          resolve(pinBus);
       };
+      resolve(pinBus);
       }); // end sensorsUids.forEach
   }); // end PIN.forEach
   });
