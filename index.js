@@ -37,19 +37,14 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    ];
 var sensorsUids = [];
 var pinBus = [];
-function getArray() {
+
+var promises = w1BusMasters.map(function(sensorsUid, index){
   return new Promise(function(resolve,reject) {
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      resolve(sensorsUids);
+      return resolve(sensorsUids);
     })
   })
-}
-async function asyncArray() {
-  var result =  await getArray();
-  // expected output: "resolved"
-  console.log('sensorsUids1: ', result); 
-}
-var promises = asyncArray();
+})
 Promise.all(promises).then(function(results) {
     console.log('results', results)
 })
