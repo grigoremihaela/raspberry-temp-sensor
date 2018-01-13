@@ -20,7 +20,7 @@ function getArray() {
 async function asyncArray(result) {
   result =  await getArray();
   // expected output: "resolved"
-  console.log('sensorsUids1: ', sensorsUids); 
+  console.log('sensorsUids1: ', result); 
   return result;
 }
 
