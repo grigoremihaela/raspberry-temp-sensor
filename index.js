@@ -9,14 +9,6 @@ var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_
                    'w1_bus_master11'
                    ];
 */
-W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-  //console.log(sensorsUids);
-  sensorsUids.forEach(function(value, index) {
-    temp.SendTempApi(value, index, 4);
-  });
-}); // end W1Temp.getSensorsUids('w1_bus_master1')
-
-/*
 var PIN = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
 
 var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
@@ -33,7 +25,7 @@ PIN.forEach(function(pin, bus) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-*/
+
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
