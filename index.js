@@ -24,7 +24,7 @@ var promise =  W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUid
     })    
 
 
-console.log(promiseResolve());
+console.log(promiseResolve);
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
