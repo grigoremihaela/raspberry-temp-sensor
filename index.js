@@ -44,7 +44,6 @@ Promise.all(promises).then(function(results) {
 console.log('sensorsUids ', sensorsUids);
 return  sensorsUids;
 }
-sensorsUids = delay();
 console.log(sensorsUids);
 
 /*
