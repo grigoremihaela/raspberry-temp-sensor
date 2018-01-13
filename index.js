@@ -38,9 +38,19 @@ var promises = w1BusMasters.map(function(w1BusMaster){
     return sensorsUids;
   })
 })
-sensorsUids = Promise.all(promises).then(function(results) {
-    console.log('results', results)
-})
+async function asyncArray() {
+  function getArray() {
+    return new Promise(function(resolve,reject) {
+        Promise.all(promises).then(function(results) {
+          console.log('results', results)
+        })
+      })
+    }
+  return await getArray();
+  // expected output: "resolved"
+  //console.log('sensorsUids1: ', sensorsUids);  
+}
+sensorsUids = asyncArray();
 console.log('sensorsUids2: ', sensorsUids);
 
 
