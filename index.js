@@ -11,23 +11,9 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
 var sensorsUids = [];
 var pinBus = [];
 
-function getArray() {
-  return new Promise(function(resolve,reject) {
-    W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      resolve(sensorsUids);
-    })
-  })
-}
-async function asyncArray() {
-  return await getArray();
-  // expected output: "resolved"
-  //console.log('sensorsUids1: ', sensorsUids);  
-}
-
-asyncArray().then( function(sensorsUids) {
-    // Do something with result.
-    console.log('sensorsUids2: ', sensorsUids);
-});
+var getSensorsUidsArray = require('./src/getSensorsUidsArray');
+var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray();
+console.log('sensorsUids: ', sensorsUids);  // []
 /*
 var promises = w1BusMasters.map(function(w1BusMaster){
   return new Promise(function(resolve,reject) {
