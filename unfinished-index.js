@@ -34,7 +34,25 @@ pinBus.forEach(function(pinBusMaster) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-
+/*
+var promise = new Promise(function(resolve, reject) {
+    try {
+        someAsyncCall(function(result) {
+            // the result in now available in the callback
+            resolve(result);
+        });
+    }
+    catch(error) {
+        reject(error);
+    }
+});
+promise
+.then(function(value) {
+    console.log("This is the result of someAsyncCall: ", value);
+}, function(error) {
+    throw error;  // rethrow the error
+});
+*/
 
 /*
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
