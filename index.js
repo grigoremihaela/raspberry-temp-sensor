@@ -35,8 +35,9 @@ function delay() {
 var promises = sensorsUids.map(function(sensorsUid){
   return new Promise(function(resolve,reject) {
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      return resolve(sensorsUids);
+      resolve(sensorsUids);
     })
+    return sensorsUids;
   })
 })
 Promise.all(promises).then(function(results) {
