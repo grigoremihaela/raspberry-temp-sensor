@@ -23,8 +23,11 @@ async function asyncArray() {
   // expected output: "resolved"
   //console.log('sensorsUids1: ', sensorsUids);  
 }
-asyncArray(); 
-console.log('sensorsUids2: ', sensorsUids); 
+
+asyncArray().then( function(sensorsUids) {
+    // Do something with result.
+    console.log('sensorsUids2: ', sensorsUids);
+});
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
