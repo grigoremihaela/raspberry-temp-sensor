@@ -41,8 +41,9 @@ var pinBus = [];
 var promises = w1BusMasters.map(function(sensorsUid, index){
   return new Promise(function(resolve,reject) {
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      return resolve(sensorsUids);
+      resolve(sensorsUids);
     })
+    return resolve(sensorsUids);
   })
 })
 Promise.all(promises).then(function(results) {
