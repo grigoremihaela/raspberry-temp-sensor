@@ -29,13 +29,13 @@ asyncArray().then( function(sensorsUids) {
     console.log('sensorsUids2: ', sensorsUids);
 });
 */
-var promises = function getArray() {
+var promises = getArray(function(resolve,reject) {
   return new Promise(function(resolve,reject) {
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
       return resolve(sensorsUids);
     })
   })
-}
+})
 Promise.all(promises).then(function(results) {
     console.log('results', results)
 })
