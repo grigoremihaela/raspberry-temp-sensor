@@ -50,6 +50,7 @@ var promises = w1BusMasters.map(function(sensorsUid, index){
 function getSensorsUidsArray() {
   Promise.all(promises).then(function(results) {
     console.log('results', results);
+  }).then(function (sensorsUids) {
     return results;
   })
 }
