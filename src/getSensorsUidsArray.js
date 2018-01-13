@@ -10,21 +10,6 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
 var sensorsUids = [];
 var pinBus = [];
 
-module.exports.GetSensorsUidsArray  = function() {
-var promises = new Promise(function(resolve,reject) {
-    W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      return resolve(sensorsUids);
-    })  
-  })
-
-Promise.resolve(promises).then(function(results) {
-    console.log('results', results)
-})
-  return sensorsUids); 
-} 
-
-
-/*
 function GetSensorsUidsArray (callback) {  
   return new Promise((resolve, reject) => {
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
@@ -36,7 +21,6 @@ function GetSensorsUidsArray (callback) {
 module.exports.GetSensorsUidsArray  = function () {
    return sensorsUids; 
 }
-*/
 /*
 var getSensorsUidsArray=require('./src/getSensorsUidsArray');
 var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray();
