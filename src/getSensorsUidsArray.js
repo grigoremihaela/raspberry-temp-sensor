@@ -15,13 +15,13 @@ var promises = new Promise(function(resolve,reject) {
       return resolve(sensorsUids);
     })  
   })
-
-Promise.resolve(promises).then(function(results) {
+module.exports.GetSensorsUidsArray  = function() {
+  Promise.resolve(promises).then(function(results) {
     console.log('results', results);
-    module.exports.GetSensorsUidsArray  = function() {
-      return results; 
-    } 
-})
+    return results; 
+  }) 
+} 
+
 
 
 
