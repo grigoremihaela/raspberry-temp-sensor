@@ -4,7 +4,7 @@ var W1Temp = require('w1temp');
 var temp=require('./src/api/temp'); 
 // "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
-var w1BusMaster = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
+var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
@@ -29,8 +29,7 @@ asyncArray().then( function(sensorsUids) {
     console.log('sensorsUids2: ', sensorsUids);
 });
 */
-var promises = function getArray() {
-    // Code to be executed
+var promises = w1BusMasters.map(function(w1BusMaster){
   return new Promise(function(resolve,reject) {
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
       resolve(sensorsUids);
@@ -38,11 +37,13 @@ var promises = function getArray() {
     })
     return sensorsUids;
   })
-}
+})
 Promise.all(promises).then(function(results) {
     console.log('results', results)
 })
 console.log('sensorsUids2: ', sensorsUids);
+
+
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
