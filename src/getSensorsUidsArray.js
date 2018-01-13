@@ -22,6 +22,13 @@ async function asyncArray() {
   // expected output: "resolved"
   //console.log('sensorsUids1: ', sensorsUids);  
 }
+
+ asyncArray().then( function(sensorsUids) {
+    // Do something with result.
+    
+    return sensorsUids;  
+ });
+ console.log('sensorsUids2: ', sensorsUids);  
 module.exports.GetSensorsUidsArray  = function () {
- return asyncArray();
+    return sensorsUids; 
 }
