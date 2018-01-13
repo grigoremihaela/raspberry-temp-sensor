@@ -48,8 +48,9 @@ var promises = w1BusMasters.map(function(sensorsUid, index){
 })
 
 function getSensorsUidsArray() {
-  return new Promise.all(promises).then(function(results) {
+  Promise.all(promises).then(function(results) {
     console.log('results', results);
+    return results;
   })
 }
 async function asyncSensorsUidsArray() {
