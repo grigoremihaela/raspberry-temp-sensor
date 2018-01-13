@@ -33,14 +33,16 @@ var promises = function getArray() {
     // Code to be executed
   return new Promise(function(resolve,reject) {
     W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      return resolve(sensorsUids);
+      resolve(sensorsUids);
+      console.log('sensorsUids1: ', sensorsUids);
     })
+    return sensorsUids;
   })
 }
 Promise.all(promises).then(function(results) {
     console.log('results', results)
 })
-console.log(sensorsUids);
+console.log('sensorsUids2: ', sensorsUids);
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
