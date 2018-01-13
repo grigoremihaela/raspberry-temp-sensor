@@ -18,12 +18,12 @@ function getSensorsUidsArray() {
     })
   })
 }
-async function asyncSensorsUidsArray() {
-  var sensorsUids = await getSensorsUidsArray();
+async function asyncArray() {
+  return await getSensorsUidsArray();
   // expected output: "resolved"
-  console.log('sensorsUids1: ', sensorsUids);  
+  //console.log('sensorsUids1: ', sensorsUids);  
 }
-asyncSensorsUidsArray(); 
+asyncArray(); 
 console.log('sensorsUids2: ', sensorsUids); 
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
