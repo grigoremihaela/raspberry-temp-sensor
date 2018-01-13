@@ -28,3 +28,25 @@ async function asyncArray() {
 module.exports.GetSensorsUidsArray  = function () {
    return sensorsUids; 
 }
+
+/* 
+// index
+var getSensorsUidsArray = require('./src/getSensorsUidsArray');
+
+var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray();
+console.log('sensorsUids: ', sensorsUids);  // []
+
+var promises = w1BusMasters.map(function(w1BusMaster){
+  return new Promise(function(resolve,reject) {
+    W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
+      resolve(sensorsUids);
+      console.log('sensorsUids1: ', sensorsUids);
+    })
+    return sensorsUids;
+  })
+})
+Promise.all(promises).then(function(results) {
+    console.log('results', results)
+})
+console.log('sensorsUids2: ', promises);
+*/
