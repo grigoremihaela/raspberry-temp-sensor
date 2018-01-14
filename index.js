@@ -40,7 +40,7 @@ function getTest(bus, maxMsWait = 20000) {
     const check = () => {
       fs.stat(file, (err, stats) => {
         if (stats && stats.isFile()) {
-          resolve();
+          return;
         } else if (err && err.code === 'ENOENT' && endTime > +new Date()) {
           setTimeout(check, 1000);
         } else {
