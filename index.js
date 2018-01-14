@@ -41,13 +41,13 @@ var promises1 = w1BusMasters.map(function(w1BusMaster){
             var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray(w1BusMaster);
             //console.log(sensorsUids ? sensorsUids.length : 'json_data is null or undefined');
             //console.log('sensorsUids ', sensorsUids);
-            if (sensorsUids !== "undefined" && sensorsUids !== []) {
-              if (sensorsUids.length > 0) {
+            //if (sensorsUids !== "undefined" && sensorsUids !== []) {
+              if (sensorsUids != []) {
                 //console.log('sensorsUids ', sensorsUids);
                 pinBus = delay(sensorsUids);
                 console.log('pinBus2 ', pinBus);
               };
-            };
+            //};
               return resolve(pinBus);
          })
 })
