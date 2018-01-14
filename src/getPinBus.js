@@ -1,8 +1,5 @@
 // v3 
 var request=require('request');
-var W1Temp = require('w1temp');
-var temp = require('./src/api/temp'); 
-var getSensorsUidsArray = require('./src/getSensorsUidsArray'); 
 var fs =  require('fs');
 //var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
 const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;

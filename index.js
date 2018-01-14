@@ -3,8 +3,8 @@ var request=require('request');
 var W1Temp = require('w1temp');
 var temp = require('./src/api/temp'); 
 var getSensorsUidsArray = require('./src/getSensorsUidsArray'); 
+var getPinBus=require('./src/getPinBus');
 var fs =  require('fs');
-//var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
 const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;
   
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22]; // "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
@@ -12,9 +12,7 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
-var pinBus = [];
 
-var getPinBus=require('./src/getPinBus');
 var pinBus = getPinBus.GetPinBus();
 console.log('pinBus end: ', pinBus);  // []
 
