@@ -32,7 +32,7 @@ function fileExistsWait(file, maxMsWait = 20000) {
   });
 }
 function getTest(bus) {
-  return new Promise((resolve, reject) => {
+  
     const file = '/sys/bus/w1/devices/' + bus + '/w1_master_slaves';
 
     fileExistsWait(file)
@@ -42,12 +42,8 @@ function getTest(bus) {
           .split('\n')
           .filter((line) => SENSOR_UID_REGEXP.test(line));
 
-        resolve(list);
+        return list;
       })
-      .catch(() => {
-        reject(new Error('Cant get list of sensors'));
-      });
-  });
 }
 async function asyncCall(bus) {
   var result = await getTest(bus);
