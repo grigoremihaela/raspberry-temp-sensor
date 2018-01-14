@@ -12,7 +12,7 @@ module.exports.GetSensorExist = function (sensorUid) {
 
       const endTime = +new Date() + maxMsWait;
 
-    const check = () => {
+    
       fs.stat(file, (err, stats) => {
         if (stats && stats.isFile()) {
           return true;
@@ -23,9 +23,6 @@ module.exports.GetSensorExist = function (sensorUid) {
           return false;
         }
       });
-    };
-
-    check();
 
     }
   
