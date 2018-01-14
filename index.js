@@ -13,57 +13,10 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 var pinBus = [];
-var aux = {};
 
-function delay(sensorsUids, w1BusMaster, key) {
-var promises = sensorsUids.map(function(sensorsUid){
-         return new Promise(function(resolve,reject) {
-            if (W1Temp.getSensor(sensorsUid)) {
-                 if (pinBus === []) {
-                   pinBus.push({ 'pin': PIN[key], 'busMaster': w1BusMaster });
-                   aux = { 'pin': PIN[key], 'busMaster': w1BusMaster };
-                 };
-                 if (pinBus != [] && aux.pin!=PIN[key]) {
-                   pinBus.push({ 'pin': PIN[key], 'busMaster': w1BusMaster });
-                   aux = { 'pin': PIN[key], 'busMaster': w1BusMaster };
-                 };
-            };
-            return resolve(pinBus);
-         })
-})
-Promise.all(promises).then(function(results) {
-    //console.log('results', results)
-})
-//console.log('pinBus1 ', pinBus);
-return  pinBus;
-}
-//pinBus = delay(sensorsUids);
-//console.log(pinBus);
-function delay2() {
-var promises1 = w1BusMasters.map(function(w1BusMaster, key){
-         return new Promise(function(resolve,reject) {
-          //console.log('key ', key);
-            var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray(w1BusMaster);
-            //console.log(sensorsUids ? sensorsUids.length : 'json_data is null or undefined');
-            //console.log('sensorsUids ', sensorsUids);
-            //if (sensorsUids !== "undefined" && sensorsUids !== []) {
-              if (sensorsUids != []) {
-                //console.log('sensorsUids ', sensorsUids);
-                pinBus = delay(sensorsUids, w1BusMaster, key);
-                //console.log('pinBus2 ', pinBus);
-              };
-            //};
-              return resolve(pinBus);
-         })
-})
-Promise.all(promises1).then(function(results1) {
-    //console.log('results1', results1)
-})
-return  pinBus;
-}
-var pinBus = delay2();
-console.log('pinBus ', pinBus);
-//console.log('pinBus ', pinBus);
+var getPinBus=require('./src/getPinBus');
+var pinBus = getPinBus.GetPinBus();
+console.log('pinBus end: ', pinBus);  // []
 
 /* v4
 PIN.forEach(function(pin, bus) {
