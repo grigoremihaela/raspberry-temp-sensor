@@ -12,15 +12,16 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
                    'w1_bus_master11'
                    ];
+var pinBus = [];
 
 function delay(sensorsUids) {
 var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
             if (W1Temp.getSensor(sensorsUid)) {
-                 if (pinBus.length === 0) {
+                 if (pinBus === []) {
                    pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
                  };
-                 if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
+                 if (pinBus != [] && pinBus[pinBus.length-1].pin!=4) {
                    pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
                  };
             };
