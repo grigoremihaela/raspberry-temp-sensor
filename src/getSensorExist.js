@@ -20,6 +20,7 @@ module.exports.GetSensorExist = function (sensorUid) {
           setTimeout(check, 1000);
         } else {
           reject();
+          return false;
         }
       });
     };
