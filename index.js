@@ -16,13 +16,12 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
 var pinBus = [];
 var aux = {};
 
-var sensorsUid = getSensorExist.GetSensorExist('00-760000000000');
-console.log('check: ', sensorsUid); 
-
 function delay(sensorsUids, w1BusMaster, key) {
 var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
-            if (W1Temp.getSensor(sensorsUid)) {
+            var checkSensorsUid = getSensorExist.GetSensorExist('00-760000000000');
+            console.log('check: ', checkSensorsUid); 
+            if (checkSensorsUid) {
                  if (pinBus === []) {
                    pinBus.push({ 'pin': PIN[key], 'busMaster': w1BusMaster });
                    aux = { 'pin': PIN[key], 'busMaster': w1BusMaster };
