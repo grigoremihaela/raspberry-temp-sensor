@@ -38,12 +38,14 @@ return  pinBus;
 function delay2() {
 var promises1 = w1BusMasters.map(function(w1BusMaster){
          return new Promise(function(resolve,reject) {
-              var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray(w1BusMaster);
-              if (sensorsUids && typeof sensorsUids != "undefined" && sensorsUids.length > 0) {
+            var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray(w1BusMaster);
+            if (sensorsUids) {
+              if (sensorsUids.length > 0) {
                 console.log('sensorsUids ', sensorsUids);
                 pinBus = delay(sensorsUids);
                 console.log('pinBus2 ', pinBus);
               };
+            };
               return resolve(pinBus);
          })
 })
