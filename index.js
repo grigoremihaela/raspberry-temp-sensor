@@ -52,7 +52,7 @@ Promise.all(promises1).then(function(results1) {
 })
 return  pinBus;
 }
-pinBus = delay2();
+var pinBus = delay2();
 console.log('pinBus ', pinBus);
 //console.log('pinBus ', pinBus);
 
