@@ -1,26 +1,37 @@
 var request=require('request');
-var W1Temp = require('w1temp');
+var fs =  require('fs');
+//var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
+const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;
 
-// "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
-var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];
-var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
-                   'w1_bus_master6',  'w1_bus_master7',  'w1_bus_master8',  'w1_bus_master9',  'w1_bus_master10', 
-                   'w1_bus_master11'
-                   ];
-var sensorsUids = [];
-var pinBus = [];
+module.exports.GetSensorsUidsArray = function (bus) {  
+    const maxMsWait = 20000;
+    const file = '/sys/bus/w1/devices/' + bus + '/w1_master_slaves';
 
-function GetSensorsUidsArray (callback) {  
-  return new Promise((resolve, reject) => {
-    W1Temp.getSensorsUids('w1_bus_master1').then(function (sensorsUids) {
-      return callback ? callback(null, sensorsUids) : resolve(sensorsUids)
-    })    
-  })
+        const endTime = +new Date() + maxMsWait;
+
+    const check = () => {
+      fs.stat(file, (err, stats) => {
+        if (stats && stats.isFile()) {
+          return;
+        } else if (err && err.code === 'ENOENT' && endTime > +new Date()) {
+          setTimeout(check, 1000);
+        } else {
+          reject();
+        }
+      });
+    };
+
+    check();
+
+        const data = fs.readFileSync(file, 'utf8');
+        const list = data
+          .split('\n')
+          .filter((line) => SENSOR_UID_REGEXP.test(line));
+
+        return list;
+      
 }
 
-module.exports.GetSensorsUidsArray  = function () {
-   return sensorsUids; 
-}
 /*
 var getSensorsUidsArray=require('./src/getSensorsUidsArray');
 var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray();

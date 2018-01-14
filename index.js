@@ -2,6 +2,7 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp = require('./src/api/temp'); 
+var getSensorsUidsArray = require('./src/api/getSensorsUidsArray'); 
 var fs =  require('fs');
 //var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
 const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;
@@ -12,56 +13,10 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 
-function fileExistsWait(file, maxMsWait = 20000) {
-  return new Promise((resolve, reject) => {
-    const endTime = +new Date() + maxMsWait;
 
-    const check = () => {
-      fs.stat(file, (err, stats) => {
-        if (stats && stats.isFile()) {
-          resolve();
-        } else if (err && err.code === 'ENOENT' && endTime > +new Date()) {
-          setTimeout(check, 1000);
-        } else {
-          reject();
-        }
-      });
-    };
 
-    check();
-  });
-}
-function getTest(bus, maxMsWait = 20000) {
-  
-    const file = '/sys/bus/w1/devices/' + bus + '/w1_master_slaves';
-
-        const endTime = +new Date() + maxMsWait;
-
-    const check = () => {
-      fs.stat(file, (err, stats) => {
-        if (stats && stats.isFile()) {
-          return;
-        } else if (err && err.code === 'ENOENT' && endTime > +new Date()) {
-          setTimeout(check, 1000);
-        } else {
-          reject();
-        }
-      });
-    };
-
-    check();
-
-        const data = fs.readFileSync(file, 'utf8');
-        const list = data
-          .split('\n')
-          .filter((line) => SENSOR_UID_REGEXP.test(line));
-
-        return list;
-      
-}
-
-var sensorsUids = getTest('w1_bus_master1');
-console.log('sensorsUids2: ', sensorsUids); 
+var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray('w1_bus_master1');
+console.log('sensorsUids: ', sensorsUids); 
 /*
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMasters[bus]).then(function (sensorsUids) {
