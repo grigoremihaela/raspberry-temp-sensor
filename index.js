@@ -39,7 +39,7 @@ function delay2() {
 var promises1 = w1BusMasters.map(function(w1BusMaster){
          return new Promise(function(resolve,reject) {
             var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray(w1BusMaster);
-            if (sensorsUids) {
+            if (sensorsUids && typeof sensorsUids === "array") {
               if (sensorsUids.length > 0) {
                 console.log('sensorsUids ', sensorsUids);
                 pinBus = delay(sensorsUids);
