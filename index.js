@@ -42,7 +42,7 @@ var promises1 = w1BusMasters.map(function(w1BusMaster){
             //console.log(sensorsUids ? sensorsUids.length : 'json_data is null or undefined');
             //console.log('sensorsUids ', sensorsUids);
             if (sensorsUids !== "undefined" && sensorsUids !== []) {
-              if (sensorsUids.length) {
+              if (sensorsUids.length > 0) {
                 //console.log('sensorsUids ', sensorsUids);
                 pinBus = delay(sensorsUids);
                 console.log('pinBus2 ', pinBus);
