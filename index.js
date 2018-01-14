@@ -1,7 +1,10 @@
 // v3 
 var request=require('request');
 var W1Temp = require('w1temp');
-var temp=require('./src/api/temp'); 
+var temp = require('./src/api/temp'); 
+var fs =  W1Temp.fs;
+var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
+var SENSOR_UID_REGEXP =  require('w1temp/src/lib/constants');
   
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22]; // "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
 var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1_bus_master4',  'w1_bus_master5',  
@@ -9,14 +12,32 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 
+
+function getTest(bus) {
+  return new Promise((resolve, reject) => {
+    const file = '/sys/bus/w1/devices/' + bus + '/w1_master_slaves';
+
+    fileExistsWait(file)
+      .then(() => {
+        const data = fs.readFileSync(file, 'utf8');
+        const list = data
+          .split('\n')
+          .filter((line) => SENSOR_UID_REGEXP.test(line));
+
+        resolve(list);
+      })
+      .catch(() => {
+        reject(new Error('Cant get list of sensors'));
+      });
+  });
+}
 async function asyncCall(bus) {
-  var result = await W1Temp.getSensorsUids(bus);
+  var result = await getTest(bus);
   // expected output: "resolved"
 }
 
-asyncCall('w1_bus_master1');
+var sensorsUids = asyncCall('w1_bus_master1');
 console.log('sensorsUids2: ', sensorsUids); 
-
 /*
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMasters[bus]).then(function (sensorsUids) {
