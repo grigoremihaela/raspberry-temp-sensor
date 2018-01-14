@@ -1,7 +1,7 @@
 // v3 
 var request=require('request');
 var fs =  require('fs');
-var getSensorsUidsArray = require('getSensorsUidsArray'); 
+var getSensorsUidsArray = require('./getSensorsUidsArray'); 
 const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;
   
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22]; // "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
