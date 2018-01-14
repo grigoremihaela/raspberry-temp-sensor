@@ -13,7 +13,7 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 var pinBus = [];
-var aux = { 'pin', 'busMaster' };
+var aux = {};
 
 function delay(sensorsUids) {
 var promises = sensorsUids.map(function(sensorsUid){
