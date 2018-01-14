@@ -10,6 +10,8 @@ module.exports.GetSensorExist = function (sensorUid) {
     } else {
       const file = `/sys/bus/w1/devices/${sensorUid}/w1_slave`;
 
+      const endTime = +new Date() + maxMsWait;
+
     const check = () => {
       fs.stat(file, (err, stats) => {
         if (stats && stats.isFile()) {
