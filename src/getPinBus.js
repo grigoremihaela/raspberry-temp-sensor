@@ -60,7 +60,7 @@ Promise.all(promises1).then(function(results1) {
 return  pinBus;
 }
 
-module.exports.GetPinBus = function (bus) { 
+module.exports.GetPinBus = function () { 
   var pinBus = delay2();
   //console.log('pinBus ', pinBus);
   return pinBus;
