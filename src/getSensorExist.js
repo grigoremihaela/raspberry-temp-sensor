@@ -19,7 +19,6 @@ module.exports.GetSensorExist = function (sensorUid) {
         } else if (err && err.code === 'ENOENT' && endTime > +new Date()) {
           setTimeout(check, 1000);
         } else {
-          reject();
           return false;
         }
       });
