@@ -35,15 +35,29 @@ function getTest(bus) {
   
     const file = '/sys/bus/w1/devices/' + bus + '/w1_master_slaves';
 
-    fileExistsWait(file)
-      .then(() => {
+        const endTime = +new Date() + maxMsWait;
+
+    const check = () => {
+      fs.stat(file, (err, stats) => {
+        if (stats && stats.isFile()) {
+          resolve();
+        } else if (err && err.code === 'ENOENT' && endTime > +new Date()) {
+          setTimeout(check, 1000);
+        } else {
+          reject();
+        }
+      });
+    };
+
+    check();
+
         const data = fs.readFileSync(file, 'utf8');
         const list = data
           .split('\n')
           .filter((line) => SENSOR_UID_REGEXP.test(line));
 
         return list;
-      })
+      
 }
 async function asyncCall(bus) {
   var result = await getTest(bus);
