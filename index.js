@@ -31,7 +31,7 @@ function fileExistsWait(file, maxMsWait = 20000) {
     check();
   });
 }
-function getTest(bus, file, maxMsWait = 20000) {
+function getTest(bus, maxMsWait = 20000) {
   
     const file = '/sys/bus/w1/devices/' + bus + '/w1_master_slaves';
 
@@ -59,13 +59,8 @@ function getTest(bus, file, maxMsWait = 20000) {
         return list;
       
 }
-async function asyncCall(bus) {
-  var result = await getTest(bus);
-  // expected output: "resolved"
-  console.log(result); 
-}
 
-var sensorsUids = asyncCall('w1_bus_master1');
+var sensorsUids = getTest('w1_bus_master1');
 console.log('sensorsUids2: ', sensorsUids); 
 /*
 PIN.forEach(function(pin, bus) {
