@@ -15,7 +15,7 @@ module.exports.GetSensorExist = function (sensorUid) {
     const check = () => {
       fs.stat(file, (err, stats) => {
         if (stats && stats.isFile()) {
-          return;
+          return true;
         } else if (err && err.code === 'ENOENT' && endTime > +new Date()) {
           setTimeout(check, 1000);
         } else {
@@ -25,7 +25,7 @@ module.exports.GetSensorExist = function (sensorUid) {
     };
 
     check();
-return true;
+
     }
   
 }
