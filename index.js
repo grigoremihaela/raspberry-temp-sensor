@@ -18,7 +18,18 @@ var aux = {};
 function delay(sensorsUids, w1BusMaster, key) {
 var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
-            if (W1Temp.getSensor(sensorsUid)) {
+
+  var promises = new Promise(function(resolve,reject) {
+    W1Temp.getSensor(sensorsUid).then(function (sensorsUid) {
+      return resolve(sensorsUid);
+    })  
+  })
+Promise.resolve(promises).then(function(results) {
+    console.log('results', results)
+})
+console.log('sensorsUid', sensorsUid)
+
+            if (sensorsUid) {
                  if (pinBus === []) {
                    pinBus.push({ 'pin': PIN[key], 'busMaster': w1BusMaster });
                    aux = { 'pin': PIN[key], 'busMaster': w1BusMaster };
@@ -42,7 +53,7 @@ return  pinBus;
 function delay2() {
 var promises1 = w1BusMasters.map(function(w1BusMaster, key){
          return new Promise(function(resolve,reject) {
-          console.log('key ', key);
+          //console.log('key ', key);
             var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray(w1BusMaster);
             //console.log(sensorsUids ? sensorsUids.length : 'json_data is null or undefined');
             //console.log('sensorsUids ', sensorsUids);
