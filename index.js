@@ -9,6 +9,15 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 
+async function asyncCall(bus) {
+  var result = await W1Temp.getSensorsUids(bus);
+  // expected output: "resolved"
+}
+
+asyncCall('w1_bus_master1');
+console.log('sensorsUids2: ', sensorsUids); 
+
+/*
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMasters[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
@@ -16,7 +25,7 @@ PIN.forEach(function(pin, bus) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
-
+*/
 /*
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
