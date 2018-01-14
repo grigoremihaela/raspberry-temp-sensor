@@ -35,17 +35,6 @@ pinBus.forEach(function(pinBusMaster) {
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
 
-/* working good
-  var promises = new Promise(function(resolve,reject) {
-    W1Temp.getSensor(sensorsUid).then(function (sensorsUid) {
-      return resolve(sensorsUid);
-    })  
-  })
-Promise.resolve(promises).then(function(results) {
-    console.log('results', results)
-})
-console.log('sensorsUid', sensorsUid)
-*/
 
 /*
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22];

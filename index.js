@@ -3,6 +3,7 @@ var request=require('request');
 var W1Temp = require('w1temp');
 var temp = require('./src/api/temp'); 
 var getSensorsUidsArray = require('./src/getSensorsUidsArray'); 
+var getSensorExist = require('./src/getSensorExist'); 
 var fs =  require('fs');
 //var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
 const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;
@@ -15,21 +16,13 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
 var pinBus = [];
 var aux = {};
 
+var sensorsUid = getSensorExist.GetSensorExist('00-760000000000');
+console.log('sensorsUid: ', sensorsUid); 
+
 function delay(sensorsUids, w1BusMaster, key) {
 var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
-
-  var promises = new Promise(function(resolve,reject) {
-    W1Temp.getSensor(sensorsUid).then(function (sensorsUid) {
-      return resolve(sensorsUid);
-    })  
-  })
-Promise.resolve(promises).then(function(results) {
-    console.log('results', results)
-})
-console.log('sensorsUid', sensorsUid)
-
-            if (sensorsUid) {
+            if (W1Temp.getSensor(sensorsUid)) {
                  if (pinBus === []) {
                    pinBus.push({ 'pin': PIN[key], 'busMaster': w1BusMaster });
                    aux = { 'pin': PIN[key], 'busMaster': w1BusMaster };
