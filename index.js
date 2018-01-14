@@ -19,7 +19,7 @@ var aux = {};
 function delay(sensorsUids, w1BusMaster, key) {
 var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
-            var checkSensorsUid = getSensorExist.GetSensorExist('00-760000000000');
+            var checkSensorsUid = getSensorExist.GetSensorExist(sensorsUid);
             console.log('check: ', checkSensorsUid); 
             if (checkSensorsUid) {
                  if (pinBus === []) {
