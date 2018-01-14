@@ -13,11 +13,50 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 
+function delay(sensorsUids) {
+var promises = sensorsUids.map(function(sensorsUid){
+         return new Promise(function(resolve,reject) {
+            if (W1Temp.getSensor(sensorsUid)) {
+                 if (pinBus.length === 0) {
+                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
+                 };
+                 if (pinBus.length>0 && pinBus[pinBus.length-1].pin!=4) {
+                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
+                 };
+            };
+            return resolve(pinBus);
+         })
+})
+Promise.all(promises).then(function(results) {
+    console.log('results', results)
+})
+console.log('pinBus1 ', pinBus);
+return  pinBus;
+}
+//pinBus = delay(sensorsUids);
+//console.log(pinBus);
+function delay2() {
+var promises1 = w1BusMasters.map(function(w1BusMaster){
+         return new Promise(function(resolve,reject) {
+              var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray(w1BusMaster);
+              if (sensorsUids.length > 0) {
+                console.log('sensorsUids ', sensorsUids);
+                pinBus = delay(sensorsUids);
+                console.log('pinBus2 ', pinBus);
+              };
+              return resolve(pinBus);
+         })
+})
+Promise.all(promises1).then(function(results1) {
+    console.log('results1', results1)
+})
+return  pinBus;
+}
+pinBus = delay2();
+console.log('pinBus ', pinBus);
+//console.log('pinBus ', pinBus);
 
-
-var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray('w1_bus_master1');
-console.log('sensorsUids: ', sensorsUids); 
-/*
+/* v4
 PIN.forEach(function(pin, bus) {
   W1Temp.getSensorsUids(w1BusMasters[bus]).then(function (sensorsUids) {
     sensorsUids.forEach(function(value, index) {
@@ -25,8 +64,11 @@ PIN.forEach(function(pin, bus) {
     }); // end sensorsUids.forEach
   }); // end W1Temp.getSensorsUids
 }); // end PIN.forEach
+
+var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray('w1_bus_master1');
+console.log('sensorsUids: ', sensorsUids); 
 */
-/*
+/* v3
 var pinBus = [{'pin': 4, 'busMaster': 'w1_bus_master1'}, 
               {'pin': 5, 'busMaster': 'w1_bus_master2'}, 
               {'pin': 7, 'busMaster': 'w1_bus_master3'},
