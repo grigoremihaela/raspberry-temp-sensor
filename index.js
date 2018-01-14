@@ -15,17 +15,17 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
 var pinBus = [];
 var aux = {};
 
-function delay(sensorsUids) {
+function delay(sensorsUids, w1BusMaster) {
 var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
             if (W1Temp.getSensor(sensorsUid)) {
                  if (pinBus === []) {
-                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
-                   aux = { 'pin': 4, 'busMaster': 'w1_bus_master1' };
+                   pinBus.push({ 'pin': 4, 'busMaster': w1BusMaster });
+                   aux = { 'pin': 4, 'busMaster': w1BusMaster };
                  };
                  if (pinBus != [] && aux.pin!=4) {
-                   pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
-                   aux = { 'pin': 4, 'busMaster': 'w1_bus_master1' };
+                   pinBus.push({ 'pin': 4, 'busMaster': w1BusMaster });
+                   aux = { 'pin': 4, 'busMaster': w1BusMaster };
                  };
             };
             return resolve(pinBus);
@@ -42,13 +42,14 @@ return  pinBus;
 function delay2() {
 var promises1 = w1BusMasters.map(function(w1BusMaster){
          return new Promise(function(resolve,reject) {
+          console.log('key ', key);
             var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray(w1BusMaster);
             //console.log(sensorsUids ? sensorsUids.length : 'json_data is null or undefined');
             //console.log('sensorsUids ', sensorsUids);
             //if (sensorsUids !== "undefined" && sensorsUids !== []) {
               if (sensorsUids != []) {
                 //console.log('sensorsUids ', sensorsUids);
-                pinBus = delay(sensorsUids);
+                pinBus = delay(sensorsUids, w1BusMaster);
                 console.log('pinBus2 ', pinBus);
               };
             //};
