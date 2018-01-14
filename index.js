@@ -3,7 +3,7 @@ var request=require('request');
 var W1Temp = require('w1temp');
 var temp = require('./src/api/temp'); 
 var fs =  require('fs');
-var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
+//var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
 var SENSOR_UID_REGEXP =  require('w1temp/src/lib/constants');
   
 var PIN = [4, 5, 7, 9, 11, 13, 15, 17, 19, 21, 22]; // "sudo dtoverlay w1-gpio gpiopin=4 pullup=0"
@@ -12,7 +12,25 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 
+function fileExistsWait(file, maxMsWait = 20000) {
+  return new Promise((resolve, reject) => {
+    const endTime = +new Date() + maxMsWait;
 
+    const check = () => {
+      fs.stat(file, (err, stats) => {
+        if (stats && stats.isFile()) {
+          resolve();
+        } else if (err && err.code === 'ENOENT' && endTime > +new Date()) {
+          setTimeout(check, 1000);
+        } else {
+          reject();
+        }
+      });
+    };
+
+    check();
+  });
+}
 function getTest(bus) {
   return new Promise((resolve, reject) => {
     const file = '/sys/bus/w1/devices/' + bus + '/w1_master_slaves';
