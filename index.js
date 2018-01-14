@@ -52,6 +52,7 @@ function getTest(bus) {
 async function asyncCall(bus) {
   var result = await getTest(bus);
   // expected output: "resolved"
+  console.log(result); 
 }
 
 var sensorsUids = asyncCall('w1_bus_master1');
