@@ -15,7 +15,7 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
 
 
 
-var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray('w1_bus_master2');
+var sensorsUids = getSensorsUidsArray.GetSensorsUidsArray('w1_bus_master5');
 console.log('sensorsUids: ', sensorsUids); 
 /*
 PIN.forEach(function(pin, bus) {
