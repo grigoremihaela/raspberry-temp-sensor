@@ -33,6 +33,9 @@ module.exports.GetSensorExist = function (sensorUid) {
         .then(() => {
           return true;
         })
+        .catch(() => {
+          return false;
+        });
     }
 }
 
