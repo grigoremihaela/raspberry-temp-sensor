@@ -38,6 +38,11 @@ module.exports.GetSensorExist = function (sensorUid) {
         });
     }
 }
+/* index
+var getSensorExist = require('./src/getSensorExist'); 
 
-
+            var checkSensorsUid = getSensorExist.GetSensorExist(sensorsUid);
+            console.log('check: ', checkSensorsUid, sensorsUid); 
+            if (checkSensorsUid) {
+*/
 

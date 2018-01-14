@@ -3,7 +3,6 @@ var request=require('request');
 var W1Temp = require('w1temp');
 var temp = require('./src/api/temp'); 
 var getSensorsUidsArray = require('./src/getSensorsUidsArray'); 
-var getSensorExist = require('./src/getSensorExist'); 
 var fs =  require('fs');
 //var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
 const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;
@@ -19,9 +18,7 @@ var aux = {};
 function delay(sensorsUids, w1BusMaster, key) {
 var promises = sensorsUids.map(function(sensorsUid){
          return new Promise(function(resolve,reject) {
-            var checkSensorsUid = getSensorExist.GetSensorExist(sensorsUid);
-            console.log('check: ', checkSensorsUid, sensorsUid); 
-            if (checkSensorsUid) {
+            if (W1Temp.getSensor(sensorsUid)) {
                  if (pinBus === []) {
                    pinBus.push({ 'pin': PIN[key], 'busMaster': w1BusMaster });
                    aux = { 'pin': PIN[key], 'busMaster': w1BusMaster };
