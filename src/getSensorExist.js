@@ -1,5 +1,6 @@
 var request=require('request');
 var fs =  require('fs');
+var Sensor = require('w1temp/src/lib/Sensor');
 const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;
 
 module.exports.GetSensorExist = function (sensorUid) {  
@@ -9,8 +10,6 @@ module.exports.GetSensorExist = function (sensorUid) {
     } else {
       const file = `/sys/bus/w1/devices/${sensorUid}/w1_slave`;
 
-     const endTime = +new Date() + maxMsWait;
-     
     const check = () => {
       fs.stat(file, (err, stats) => {
         if (stats && stats.isFile()) {
@@ -23,8 +22,8 @@ module.exports.GetSensorExist = function (sensorUid) {
       });
     };
 
-    return check();
-
+    check();
+return true;
     }
   
 }
