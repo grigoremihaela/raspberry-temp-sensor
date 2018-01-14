@@ -31,7 +31,7 @@ function fileExistsWait(file, maxMsWait = 20000) {
     check();
   });
 }
-function getTest(bus) {
+function getTest(bus, file, maxMsWait = 20000) {
   
     const file = '/sys/bus/w1/devices/' + bus + '/w1_master_slaves';
 
