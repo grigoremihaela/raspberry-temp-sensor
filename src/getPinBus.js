@@ -59,7 +59,7 @@ Promise.all(promises1).then(function(results1) {
 return  pinBus;
 }
 
-module.exports.GetSensorsUidsArray = function (bus) { 
+module.exports.GetPinBus = function (bus) { 
   var pinBus = delay2();
   //console.log('pinBus ', pinBus);
   return pinBus;
