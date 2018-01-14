@@ -31,11 +31,8 @@ module.exports.GetSensorExist = function (sensorUid) {
 
       fileExistsWait(file)
         .then(() => {
-          return file;
+          return true;
         })
-        .catch(() => {
-          reject(new Error('Cant get sensor instance'));
-        });
     }
 }
 
