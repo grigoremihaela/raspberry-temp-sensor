@@ -1,6 +1,5 @@
 var request=require('request');
 var fs =  require('fs');
-var Sensor = require('w1temp/src/lib/Sensor');
 const SENSOR_UID_REGEXP = /^[0-9a-f]{2}-[0-9a-f]{12}$/;
 
 module.exports.GetSensorExist = function (sensorUid) {  

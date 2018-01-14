@@ -17,7 +17,7 @@ var pinBus = [];
 var aux = {};
 
 var sensorsUid = getSensorExist.GetSensorExist('00-760000000000');
-console.log('sensorsUid: ', sensorsUid); 
+console.log('check: ', sensorsUid); 
 
 function delay(sensorsUids, w1BusMaster, key) {
 var promises = sensorsUids.map(function(sensorsUid){
