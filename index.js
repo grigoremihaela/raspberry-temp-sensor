@@ -2,7 +2,7 @@
 var request=require('request');
 var W1Temp = require('w1temp');
 var temp = require('./src/api/temp'); 
-var fs =  W1Temp.fs;
+var fs =  require('fs');
 var fileExistsWait = require('w1temp/src/lib/fileExistsWait');
 var SENSOR_UID_REGEXP =  require('w1temp/src/lib/constants');
   
