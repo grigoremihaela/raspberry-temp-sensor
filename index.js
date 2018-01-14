@@ -13,6 +13,7 @@ var w1BusMasters = ['w1_bus_master1',  'w1_bus_master2',  'w1_bus_master3',  'w1
                    'w1_bus_master11'
                    ];
 var pinBus = [];
+var aux = { 'pin', 'busMaster' };
 
 function delay(sensorsUids) {
 var promises = sensorsUids.map(function(sensorsUid){
@@ -20,9 +21,11 @@ var promises = sensorsUids.map(function(sensorsUid){
             if (W1Temp.getSensor(sensorsUid)) {
                  if (pinBus === []) {
                    pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
+                   aux = { 'pin': 4, 'busMaster': 'w1_bus_master1' };
                  };
-                 if (pinBus != [] && pinBus[pinBus.length-1].pin!=4) {
+                 if (pinBus != [] && aux.pin!=4) {
                    pinBus.push({ 'pin': 4, 'busMaster': 'w1_bus_master1' });
+                   aux = { 'pin': 4, 'busMaster': 'w1_bus_master1' };
                  };
             };
             return resolve(pinBus);
